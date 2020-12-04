@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .red
 		
-		apiSession.request(.getCharacters).done { (characters: [Character]) in
+		apiSession.request(.getCharacters).done { (characters: CharacterRequest) in
 			debugPrint(characters)
 		}.catch { error in
 //			switch (error as? ApiError) {
