@@ -35,4 +35,20 @@ export MARVEL_PUBLIC_API_KEY=YOUR_PUBLIC_API_KEY
 export MARVEL_PRIVATE_API_KEY=YOUR_PRIVATE_API_KEY
 ```
 
-Before compiling Swift files, Sourcery will generate a configuration file with these credentials, first, you must delete the current file on Xcode (the file with a red name), drag & drop from finder the new generated file.
+> ### Important
+> `Sourcery` will generate a configuration file with these credentials, but take in account when you're compiling the project, the `Environment.generated.swift` file is missed, and `Sourcery` needs compile the project without errors to be able to generate the `Environment.generated.swift`. Because of that, you need to comment the next lines of code on file `APIRouter.swift`, then the file will be generated and you'll drag and drop on Xcode, the file should be placed in `Environment` folder of the project, now you can uncomment the code. :
+
+```swift
+private var parameters: Parameters? {
+		switch self {
+		case .getCharacters(let limit, let offset):
+			return [
+				NetworkConstants.ParameterKey.limit.rawValue: limit,
+				NetworkConstants.ParameterKey.offset.rawValue: offset,
+//				NetworkConstants.ParameterKey.apikey.rawValue: credentials.publicApiKey,
+//				NetworkConstants.ParameterKey.ts.rawValue: credentials.timestamp,
+//				NetworkConstants.ParameterKey.hash.rawValue: credentials.hash
+			]
+		}
+	}
+```
