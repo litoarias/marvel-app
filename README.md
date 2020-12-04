@@ -17,4 +17,4 @@ export MARVEL_PUBLIC_API_KEY=YOUR_PUBLIC_API_KEY
 export MARVEL_PRIVATE_API_KEY=YOUR_PRIVATE_API_KEY
 ```
 
-Before compile Swift files, Sourcery will generate a configuration file with these credentials
+Before compiling Swift files, Sourcery will generate a configuration file with these credentials, first, you must delete the current file on Xcode (the file with a red name), drag & drop from finder the new generated file.
