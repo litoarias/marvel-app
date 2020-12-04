@@ -10,8 +10,6 @@ The application is made using the [Marvel API](https://developer.marvel.com), in
 
 ## Build and run the application
 
-You should name the root folder when cloning project it like root project folder `MarvelApp`, in order to allow Sourcery to make the magic!
-
 To run the application using real data obtained from the [Marvel API](https://developer.marvel.com) create a `env-vars.sh` file inside the project directory and add your `public` and `private` key there as follows:
 
 ``` bash
