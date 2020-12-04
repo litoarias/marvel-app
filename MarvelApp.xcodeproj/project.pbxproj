@@ -22,7 +22,8 @@
 		41A3F319257A794B00C75DD6 /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F313257A794B00C75DD6 /* CharacterList.swift */; };
 		41A3F31A257A794B00C75DD6 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F314257A794B00C75DD6 /* Comic.swift */; };
 		41A3F31B257A794B00C75DD6 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F315257A794B00C75DD6 /* CharacterData.swift */; };
-		41D28104257A431500B4659B /* Environment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 41D28103257A431500B4659B /* Environment.stencil */; };
+		41E88904257A8528001E0E3C /* Environment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 41E88903257A8528001E0E3C /* Environment.stencil */; };
+		41E8890D257A853E001E0E3C /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E8890C257A853E001E0E3C /* Environment.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,8 @@
 		41A3F313257A794B00C75DD6 /* CharacterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		41A3F314257A794B00C75DD6 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		41A3F315257A794B00C75DD6 /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
-		41D28103257A431500B4659B /* Environment.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Environment.stencil; sourceTree = "<group>"; };
+		41E88903257A8528001E0E3C /* Environment.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Environment.stencil; sourceTree = "<group>"; };
+		41E8890C257A853E001E0E3C /* Environment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.generated.swift; sourceTree = "<group>"; };
 		FDB1AFF4781A0629E6302690 /* Pods_MarvelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,8 +124,8 @@
 			children = (
 				410D1F002579A84C00D1F287 /* AppDelegate.swift */,
 				410D1F042579A84C00D1F287 /* ViewController.swift */,
+				41E88902257A8528001E0E3C /* Environment */,
 				41A3F302257A682500C75DD6 /* Models */,
-				41A3F339257A7F9E00C75DD6 /* Environment */,
 				41A3F2FC257A663800C75DD6 /* Utils */,
 				410D1F092579A85300D1F287 /* Assets.xcassets */,
 				410D1F0B2579A85300D1F287 /* LaunchScreen.storyboard */,
@@ -196,10 +198,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		41A3F339257A7F9E00C75DD6 /* Environment */ = {
+		41E88902257A8528001E0E3C /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				41D28103257A431500B4659B /* Environment.stencil */,
+				41E88903257A8528001E0E3C /* Environment.stencil */,
+				41E8890C257A853E001E0E3C /* Environment.generated.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -327,9 +330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41D28104257A431500B4659B /* Environment.stencil in Resources */,
 				410D1F0D2579A85300D1F287 /* LaunchScreen.storyboard in Resources */,
 				410D1F0A2579A85300D1F287 /* Assets.xcassets in Resources */,
+				41E88904257A8528001E0E3C /* Environment.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +369,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#check if env-vars.sh exists\necho \"${SRCROOT}/env-vars.sh\"\n\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\necho \"I am here\"\nsource ${SRCROOT}/env-vars.sh\nfi\n\n#no `else` case needed if the CI works as expected\n${SRCROOT}/Pods/Sourcery/bin/sourcery --templates ${SRCROOT}/MarvelApp/Environment --sources ${SRCROOT} --output ${SRCROOT}/MarvelApp/Environment --args publicApiKey=$MARVEL_PUBLIC_API_KEY,privateApiKey=$MARVEL_PRIVATE_API_KEY\n";
+			shellScript = "#check if env-vars.sh exists\necho \"${SRCROOT}/env-vars.sh\"\n\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\necho \"I am here\"\nsource ${SRCROOT}/env-vars.sh\nfi\n\n#no `else` case needed if the CI works as expected\n${SRCROOT}/Pods/Sourcery/bin/sourcery --templates ${SRCROOT}/MarvelApp --sources ${SRCROOT} --output ${SRCROOT}/MarvelApp/Environment --args publicApiKey=$MARVEL_PUBLIC_API_KEY,privateApiKey=$MARVEL_PRIVATE_API_KEY\n";
 		};
 		614DB57BA87EAED40DA2ED30 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -423,6 +426,7 @@
 				41A3F2F8257A627800C75DD6 /* Character.swift in Sources */,
 				41A3F31A257A794B00C75DD6 /* Comic.swift in Sources */,
 				41A3F317257A794B00C75DD6 /* Thumbnail.swift in Sources */,
+				41E8890D257A853E001E0E3C /* Environment.generated.swift in Sources */,
 				41A3F318257A794B00C75DD6 /* Url.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

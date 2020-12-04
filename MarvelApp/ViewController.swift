@@ -81,9 +81,9 @@ enum APIRouter: URLRequestConvertible {
 			return [
 				"limit": 20,
 				"offset": 0,
-				"apikey": credentials.publicApiKey,
-				"ts": credentials.timestamp,
-				"hash": credentials.hash
+//				"apikey": credentials.publicApiKey,
+//				"ts": credentials.timestamp,
+//				"hash": credentials.hash
 			]
 		}
 	}
