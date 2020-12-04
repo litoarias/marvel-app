@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  MarvelApp
-//
-//  Created by Hipolito Arias on 4/12/20.
-//
 
 import UIKit
 import Foundation
@@ -11,10 +5,24 @@ import PromiseKit
 import Alamofire
 
 class ViewController: UIViewController {
+	let apiSession = Session()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		view.backgroundColor = .red
 		
+		apiSession.request(.getCharacters).done { (characters: [Character]) in
+			debugPrint(characters)
+		}.catch { error in
+//			switch (error as? ApiError) {
+//			case .badAPIRequest: break
+//			default:
+//				debugPrint(error)
+//			}
+			debugPrint("")
+		}.finally {
+			debugPrint("")
+		}
 	}
 	
 	
@@ -23,13 +31,14 @@ class ViewController: UIViewController {
 struct NetworkConstants {
 	
 	/// Base URL
-	static let baseURL = "https:our-api-base-url.com"
+	static let baseURL = "https://gateway.marvel.com/"
 	
-	/// Parameter Keys
 	enum ParameterKey: String {
-		// Auth
-		case email = "email"
-		case password = "password"
+		case limit = "limit"
+		case offset = "offset"
+		case apikey = "apikey"
+		case ts = "ts"
+		case hash = "hash"
 	}
 	
 	/// The keys for HTTP header fields
@@ -49,43 +58,38 @@ struct NetworkConstants {
 enum APIRouter: URLRequestConvertible {
 	
 	// MARK: - Endpoints
-	case getPosts
-	case getPostDetails(id: Int)
-	case signIn(email: String, password: String)
+	case getCharacters
 	
 	// MARK: - Properties
 	private var method: HTTPMethod {
 		switch self {
-		case .getPosts, .getPostDetails:
+		case .getCharacters:
 			return .get
-		case .signIn:
-			return .post
 		}
 	}
 	
 	private var path: String {
 		switch self {
-		case .getPosts:
-			return "api/posts"
-		case .getPostDetails(let id):
-			return "api/posts/\(id)"
-		case .signIn:
-			return "api/auth/login"
+		case .getCharacters:
+			return "v1/public/characters"
 		}
 	}
 	
 	private var parameters: Parameters? {
 		switch self {
-		default:
-			return nil
+		case .getCharacters:
+			return [
+				"limit": 20,
+				"offset": 0,
+				"apikey": credentials.publicApiKey,
+				"ts": credentials.timestamp,
+				"hash": credentials.hash
+			]
 		}
 	}
 	
 	private var body: Parameters? {
 		switch self {
-		case .signIn(let email, let password):
-			return [NetworkConstants.ParameterKey.email.rawValue: email,
-					NetworkConstants.ParameterKey.password.rawValue: password]
 		default:
 			return nil
 		}
@@ -103,10 +107,14 @@ enum APIRouter: URLRequestConvertible {
 		urlRequest.httpMethod = method.rawValue
 		
 		// Set common headers
-		urlRequest.setValue(NetworkConstants.HTTPHeaderFieldValue.json.rawValue,
-							forHTTPHeaderField: NetworkConstants.HTTPHeaderFieldKey.acceptType.rawValue)
-		urlRequest.setValue(NetworkConstants.HTTPHeaderFieldValue.json.rawValue,
-							forHTTPHeaderField: NetworkConstants.HTTPHeaderFieldKey.contentType.rawValue)
+		urlRequest.setValue(
+			NetworkConstants.HTTPHeaderFieldValue.json.rawValue,
+			forHTTPHeaderField: NetworkConstants.HTTPHeaderFieldKey.acceptType.rawValue
+		)
+		urlRequest.setValue(
+			NetworkConstants.HTTPHeaderFieldValue.json.rawValue,
+			forHTTPHeaderField: NetworkConstants.HTTPHeaderFieldKey.contentType.rawValue
+		)
 		
 		// Add http body to request
 		if let body = body {
@@ -114,7 +122,7 @@ enum APIRouter: URLRequestConvertible {
 				let data = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
 				urlRequest.httpBody = data
 			} catch (_) {
-				print("APIRouter: Failed to parse body into request.")
+				debugPrint("APIRouter: Failed to parse body into request.")
 			}
 		}
 		
@@ -128,45 +136,79 @@ enum APIRouter: URLRequestConvertible {
 }
 
 extension Session {
-	/// Triggers an HTTPRequest using alamofire with a promise as a return type
 	func request<T: Codable>(_ urlConvertible: APIRouter) -> Promise<T> {
 		return Promise<T> { seal in
-			// Trigger the HTTPRequest using Alamofire
 			request(urlConvertible).responseDecodable { (response: DataResponse<T, AFError>) in
-				// Check result from response and map it the the promise
 				switch response.result {
 				case .success(let value):
 					seal.fulfill(value)
-				case .failure:
-					// If it's a failure, check status code and map it to my error
+				case .failure(let error):
 					switch response.response?.statusCode {
 					case 400:
-						seal.reject(MyError.badAPIRequest)
+						seal.reject(ApiError.badAPIRequest)
 					case 401:
-						seal.reject(MyError.unauthorized)
+						switch error.errorDescription {
+						case UnauthorizedType.invalidCredentials.rawValue:
+							seal.reject(ApiError.unauthorized(.invalidCredentials))
+						case UnauthorizedType.invalidReferer.rawValue:
+							seal.reject(ApiError.unauthorized(.invalidReferer))
+						case UnauthorizedType.invalidHash.rawValue:
+							seal.reject(ApiError.unauthorized(.invalidHash))
+						default:
+							seal.reject(ApiError.unknown)
+						}
+					case 403:
+						seal.reject(ApiError.forbidden)
+					case 404:
+						seal.reject(ApiError.notFound)
+					case 405:
+						seal.reject(ApiError.methodNotAllowed)
+					case 409:
+						switch error.errorDescription {
+						case MissingParam.missingAPIKey.rawValue:
+							seal.reject(ApiError.badRequest(.missingAPIKey))
+						case MissingParam.missingHash.rawValue:
+							seal.reject(ApiError.badRequest(.missingHash))
+						case MissingParam.missingTimestamp.rawValue:
+							seal.reject(ApiError.badRequest(.missingTimestamp))
+						default:
+							seal.reject(ApiError.unknown)
+						}
+					case 500:
+						seal.reject(ApiError.serverDown)
 					default:
 						guard NetworkReachabilityManager()?.isReachable ?? false else {
-							seal.reject(MyError.noInternet)
+							seal.reject(ApiError.noInternet)
 							return
 						}
-						seal.reject(MyError.unknown)
+						seal.reject(ApiError.unknown)
 					}
 				}
 			}
 		}
 	}
 }
-public enum MyError: Error {
-	
-	// MARK: - Internal errors
+
+enum ApiError: Error {
 	case noInternet
-	
-	// MARK: - API errors
+	case forbidden
+	case notFound
+	case serverDown
 	case badAPIRequest
-	
-	// MARK: - Auth errors
-	case unauthorized
-	
-	// MARK: - Unknown errors
+	case methodNotAllowed
+	case badRequest(MissingParam)
+	case unauthorized(UnauthorizedType)
 	case unknown
+}
+
+enum UnauthorizedType: String {
+	case invalidCredentials = "InvalidCredentials"
+	case invalidReferer = "Invalid Referer"
+	case invalidHash = "Invalid Hash"
+}
+
+enum MissingParam: String {
+	case missingAPIKey = "Missing API Key"
+	case missingHash = "Missing Hash"
+	case missingTimestamp = "Missing Timestamp"
 }

@@ -8,6 +8,16 @@ The application is made using the [Marvel API](https://developer.marvel.com), in
 
 * Xcode 10
 
+## Third party Dependencies 
+
+### Cocoapods
+
+I prefer to use cocoapods for the simplicity of usage, pelase run below command on terminal:
+
+```bash
+pod install
+```
+
 ## Build and run the application
 
 To run the application using real data obtained from the [Marvel API](https://developer.marvel.com) create a `env-vars.sh` file inside the project directory and add your `public` and `private` key there as follows:

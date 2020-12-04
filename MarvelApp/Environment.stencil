@@ -1,7 +1,19 @@
+import Foundation
+
 public struct Credentials {
-    let publicApiKey: String
-    let privateApiKey: String
+	let publicApiKey: String
+	let privateApiKey: String
+	
+	lazy var timestamp: Int = {
+		return Int(Date().timeIntervalSince1970)
+	}()
+	
+	lazy var hash: String = {
+		return "\(self.timestamp)\(self.privateApiKey)\(self.publicApiKey)".md5()
+	}()
 }
 
-public let credentials = Credentials(publicApiKey: "{{ argument.publicApiKey }}",
-                                     privateApiKey: "{{ argument.privateApiKey }}")
+public var credentials = Credentials(
+	publicApiKey: "{{ argument.publicApiKey }}",
+	privateApiKey: "{{ argument.privateApiKey }}"
+)
