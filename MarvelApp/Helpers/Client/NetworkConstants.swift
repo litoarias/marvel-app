@@ -1,4 +1,3 @@
-
 struct NetworkConstants {
 	
 	static let baseURL = "https://gateway.marvel.com/"
@@ -8,11 +7,11 @@ struct NetworkConstants {
 	}
 	
 	enum ParameterKey: String {
-		case limit = "limit"
-		case offset = "offset"
-		case apikey = "apikey"
-		case ts = "ts"
-		case hash = "hash"
+		case limit
+		case offset
+		case apikey
+		case timestamp = "ts"
+		case hash
 	}
 	
 	enum HTTPHeaderFieldKey: String {

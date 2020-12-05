@@ -4,6 +4,8 @@ public struct Credentials {
 	let publicApiKey: String
 	let privateApiKey: String
 	
+	// This is an intentioned tip, to be able paginate list of characters for the Marvel's api
+	// always send the same timestamp
 	lazy var timestamp: Int = {
 		return Int(Date().timeIntervalSince1970)
 	}()
