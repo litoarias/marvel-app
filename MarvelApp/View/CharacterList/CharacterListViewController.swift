@@ -1,4 +1,3 @@
-import UIKit
 import PagedLists
 
 final class CharacterListViewController: UIViewController {
@@ -25,12 +24,6 @@ final class CharacterListViewController: UIViewController {
 		super.loadView()
 		setupViews()
 	}
-	
-}
-
-// MARK: - UITABLEVIEWDELEGATE
-
-extension CharacterListViewController: UITableViewDelegate {
 	
 }
 
@@ -76,8 +69,16 @@ extension CharacterListViewController: UITableViewDataSource {
 // MARK: - PAGEDTABLEVIEWDELEGATE
 
 extension CharacterListViewController: PagedTableViewDelegate {
+	
 	func tableView(_ tableView: PagedTableView, needsDataForPage page: Int, completion: @escaping (Int, NSError?) -> Void) {
 		viewModel?.fetchCharacters(completion)
+	}
+	
+	func tableView(_ tableView: PagedTableView, didSelectRowAt indexPath: IndexPath) {
+		if indexPath.section == 0 {
+			let item = characterList[indexPath.row]
+			debugPrint(item)
+		}
 	}
 }
 

@@ -11,10 +11,10 @@ extension CharacterListViewController {
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
 		tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.className)
 		tableView.dataSource = self
+		tableView.updateDelegate = self
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = UITableView.automaticDimension
 		tableView.elementsPerPage = defaultLimit
-		tableView.updateDelegate = self
 		tableView.tableFooterView = UIView()
 		
 		tableView.translatesAutoresizingMaskIntoConstraints = false
