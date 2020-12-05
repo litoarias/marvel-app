@@ -1,10 +1,14 @@
 import UIKit
 
-class LoadingTableViewCell: UITableViewCell {
+final class LoadingTableViewCell: UITableViewCell {
 	
-	var container = UIView()
-	var activityIndicator = UIActivityIndicatorView(style: .gray)
+	// MARK: - PROPERTIES
+	
+	private var container = UIView()
+	private var activityIndicator = UIActivityIndicatorView(style: .gray)
 	static let className = String(describing: LoadingTableViewCell.self)
+	
+	// MARK: - LIFE CYCLE
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -15,8 +19,15 @@ class LoadingTableViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func addViews() {
-		super.awakeFromNib()
+	func startAnimate() {
+		activityIndicator.startAnimating()
+	}
+}
+
+// MARK: - PRIVATE METHODS
+
+extension LoadingTableViewCell {
+	private func addViews() {
 		contentView.addSubview(container)
 		container.translatesAutoresizingMaskIntoConstraints = false
 		container.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -28,12 +39,5 @@ class LoadingTableViewCell: UITableViewCell {
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		activityIndicator.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
 		activityIndicator.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
-		activityIndicator.heightAnchor.constraint(equalToConstant: 120).isActive = true
-		activityIndicator.widthAnchor.constraint(equalToConstant: 120).isActive = true
-	}
-	
-	override func prepareForReuse() {
-		super.prepareForReuse()
-		activityIndicator.startAnimating()
 	}
 }

@@ -1,18 +1,15 @@
 import UIKit
-import PromiseKit
-import Alamofire
 import PagedLists
 
 final class CharacterListViewController: UIViewController {
 	
-	// MARK: - Properties
+	// MARK: - PROPERTIES
 	
 	var tableView = PagedTableView(frame: .zero)
-	
 	private var characterList = [Character]()
-	var viewModel: CharacterListViewModel?
+	private var viewModel: CharacterListViewModel?
 	
-	// MARK: - Life cycle
+	// MARK: - LIFE CYCLE
 	
 	init(viewModel: CharacterListViewModel) {
 		super.init(nibName: nil, bundle: nil)
@@ -31,12 +28,13 @@ final class CharacterListViewController: UIViewController {
 	
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITABLEVIEWDELEGATE
 
 extension CharacterListViewController: UITableViewDelegate {
+	
 }
 
-// MARK: - Data Source
+// MARK: - UITABLEVIEWDATASOURCE
 
 extension CharacterListViewController: UITableViewDataSource {
 	
@@ -69,13 +67,13 @@ extension CharacterListViewController: UITableViewDataSource {
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.className, for: indexPath) as? LoadingTableViewCell
-			cell?.activityIndicator.startAnimating()
+			cell?.startAnimate()
 			return cell ?? LoadingTableViewCell()
 		}
 	}
 }
 
-// MARK: - PagedTableViewDelegate
+// MARK: - PAGEDTABLEVIEWDELEGATE
 
 extension CharacterListViewController: PagedTableViewDelegate {
 	func tableView(_ tableView: PagedTableView, needsDataForPage page: Int, completion: @escaping (Int, NSError?) -> Void) {
@@ -83,48 +81,25 @@ extension CharacterListViewController: PagedTableViewDelegate {
 	}
 }
 
-// MARK: - Private Methods
+// MARK: - PRIVATE METHODS
 
 extension CharacterListViewController {
 	
 	private func bindProperties() {
+		
 		viewModel?.hasMore.bind({ [weak self] hasMore in
 			guard let self = self else { return }
 			self.tableView.hasMore = hasMore ?? false
 		})
+		
 		viewModel?.characters.bind({ [weak self] newItems in
 			guard let self = self else { return }
-			debugPrint(self.characterList.count)
 			self.characterList += newItems ?? []
-			debugPrint(self.characterList.count)
 		})
+		
 		viewModel?.reload.bind({ [weak self] _ in
 			guard let self = self else { return }
 			self.tableView.reloadData()
 		})
 	}
-	
-	//	func fetchCharacters(_ completion: ((Int, NSError?) -> Void)?) {
-	//		firstly {
-	//			session.getCharacters(currentPage)
-	//		}.then {
-	//			self.reloadItems($0, completion: completion ?? {_,_ in})
-	//		}.catch {
-	//			debugPrint($0)
-	//		}.finally {
-	//			self.tableView.reloadData()
-	//		}
-	//	}
-	//
-	//	func reloadItems(_ list: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<Int> {
-	//		let (promise, seal) = Promise<Int>.pending()
-	//		currentPage.offset += list.data?.count ?? 0
-	//		self.characterList += list.data?.results ?? []
-	//		let loadmore = currentPage.offset < defaultLimit
-	//		tableView.hasMore = loadmore
-	//		completion(list.data?.count ?? 0, nil)
-	//		seal.fulfill(currentPage.offset)
-	//		return promise
-	//	}
-	
 }
