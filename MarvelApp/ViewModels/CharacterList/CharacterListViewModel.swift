@@ -10,6 +10,7 @@ final class CharacterListViewModel: CharacterListProtocol {
 	var hasMore: Observable<Bool?> = Observable(true)
 	var characters: Observable<[Character]?> = Observable([])
 	var reload: Observable<Void?> = Observable(())
+	var errorMessage: Observable<String?> = Observable(nil)
 	
 	init(_ session: APIProtocol) {
 		self.session = session
@@ -24,8 +25,7 @@ final class CharacterListViewModel: CharacterListProtocol {
 		}.then {
 			self.appendData($0, completion: $1)
 		}.catch {
-			#warning("Please do unhappy path!!")
-			debugPrint($0)
+			self.errorMessage.value = ($0 as? ApiError)?.errorDescription
 		}.finally {
 			self.reload.value = ()
 		}

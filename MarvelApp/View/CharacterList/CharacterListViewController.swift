@@ -102,5 +102,10 @@ extension CharacterListViewController {
 			guard let self = self else { return }
 			self.tableView.reloadData()
 		})
+		
+		viewModel?.errorMessage.bind({ [weak self] message in
+			guard let self = self else { return }
+			self.popupAlert(title: "Error", message: message)
+		})
 	}
 }

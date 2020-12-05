@@ -10,6 +10,17 @@ enum ApiError: Error {
 	case badRequest(MissingParam)
 	case unauthorized(UnauthorizedType)
 	case unknown
+	
+	var errorDescription: String? {
+		switch self {
+		case .noInternet:
+			return "Internet connection appears offline"
+		case .unknown:
+			return "The services are down! Please try again later"
+		default:
+			return "The operation can't be completed"
+		}
+	}
 }
 
 enum UnauthorizedType: String {

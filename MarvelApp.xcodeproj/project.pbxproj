@@ -23,6 +23,7 @@
 		415638FE257BFDD20029C509 /* ClientContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638FD257BFDD20029C509 /* ClientContract.swift */; };
 		41563903257BFE420029C509 /* ClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41563902257BFE420029C509 /* ClientMock.swift */; };
 		41563918257C02040029C509 /* characters-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 41563917257C02040029C509 /* characters-response.json */; };
+		415ADE6C257C46F700C2A402 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415ADE6B257C46F700C2A402 /* UIViewController+Alert.swift */; };
 		417BC463257C052400FEB8E6 /* Bundle+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417BC462257C052400FEB8E6 /* Bundle+Codable.swift */; };
 		41A3F2FE257A664300C75DD6 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F2FD257A664300C75DD6 /* String+md5.swift */; };
 		41A3F316257A794B00C75DD6 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F310257A794B00C75DD6 /* CharacterResponse.swift */; };
@@ -76,6 +77,7 @@
 		415638FD257BFDD20029C509 /* ClientContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientContract.swift; sourceTree = "<group>"; };
 		41563902257BFE420029C509 /* ClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMock.swift; sourceTree = "<group>"; };
 		41563917257C02040029C509 /* characters-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "characters-response.json"; sourceTree = "<group>"; };
+		415ADE6B257C46F700C2A402 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		417BC462257C052400FEB8E6 /* Bundle+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Codable.swift"; sourceTree = "<group>"; };
 		41A3F2FD257A664300C75DD6 /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		41A3F310257A794B00C75DD6 /* CharacterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				41E8894F257A9396001E0E3C /* Data+ErrorCode.swift */,
 				417BC462257C052400FEB8E6 /* Bundle+Codable.swift */,
 				41E88939257A8C69001E0E3C /* Session+PromiseKit.swift */,
+				415ADE6B257C46F700C2A402 /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				415638EB257BDEAC0029C509 /* Observable.swift in Sources */,
 				4121F613257A9AA9002DAED9 /* NetworkConstants.swift in Sources */,
 				415638CC257BCED10029C509 /* CharacterListContract.swift in Sources */,
+				415ADE6C257C46F700C2A402 /* UIViewController+Alert.swift in Sources */,
 				41C5BDC9257BB5700061A5EB /* LoadingTableViewCell.swift in Sources */,
 				41E8894B257A8CDC001E0E3C /* NetworkError.swift in Sources */,
 				41FA9BD0257AE2AD006083CB /* Page.swift in Sources */,
