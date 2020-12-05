@@ -315,6 +315,7 @@
 				41A3F2FD257A664300C75DD6 /* String+md5.swift */,
 				41E8894F257A9396001E0E3C /* Data+ErrorCode.swift */,
 				417BC462257C052400FEB8E6 /* Bundle+Codable.swift */,
+				41E88939257A8C69001E0E3C /* Session+PromiseKit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,7 +343,6 @@
 				41E8893E257A8CBC001E0E3C /* NetworkErrors */,
 				4121F612257A9AA9002DAED9 /* NetworkConstants.swift */,
 				4121F617257A9AC7002DAED9 /* APIRouter.swift */,
-				41E88939257A8C69001E0E3C /* Session+PromiseKit.swift */,
 				415638F8257BFDB40029C509 /* Clients */,
 			);
 			path = Client;

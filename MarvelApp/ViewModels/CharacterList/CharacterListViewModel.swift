@@ -33,17 +33,21 @@ final class CharacterListViewModel: CharacterListProtocol {
 	
 	private func incrementPage(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)> {
 		let (promise, seal) = Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)>.pending()
+		
 		currentPage.offset += request.data?.count ?? 0
 		hasMore.value = (currentPage.offset < defaultLimit)
 		seal.fulfill((request, completion))
+		
 		return promise
 	}
 	
 	private func appendData(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<Void> {
 		let (promise, seal) = Promise<Void>.pending()
+		
 		characters.value = (request.data?.results ?? [])
 		completion(request.data?.count ?? 0, nil)
 		seal.fulfill(())
+		
 		return promise
 	}
 }

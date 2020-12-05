@@ -7,6 +7,7 @@ final class ClientMock: APIProtocol {
 	
 	func getCharacters(_ page: Page) -> Promise<CharacterResponse> {
 		let (promise, seal) = Promise<CharacterResponse>.pending()
+		
 		switch error {
 		case nil:
 			guard let characters = Bundle.parse(
