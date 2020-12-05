@@ -2,12 +2,21 @@
 
 ## Description
 
-The application is made using the [Marvel API](https://developer.marvel.com), in order to explain how use MVVM, PromiseKit, Sourcery generator, Unit test and Alamofire in Swift together.
+The application is made using the [Marvel API](https://developer.marvel.com), in order to explain how to use MVVM, the main concepts are:
+
+* `MVVM` Model-ViewModel-Model architecture
+* `Environment` Multiple environments setup
+* `Unit Testing` ViewModel test cases
+* `Third party libraries`:
+	* `Alamofire` The Network layer
+	* `Sourcery` Secure credential handling
+	* `PromiseKit` More readable syntax
+	* `PagedLists` Class for manage an infinite scrolling
 
 ## Run Requirements
 
-* Xcode >10.x
-* iOS >11
+* Xcode 10+
+* iOS 11+
 
 ## Third party Dependencies 
 
@@ -21,15 +30,7 @@ I prefer to use cocoapods for the simplicity of usage, pelase run below command 
 pod install
 ```
 
-For this example I'm using next libraries:
-
-```ruby 
-pod 'Alamofire'
-pod 'PromiseKit/CorePromise'
-pod 'Sourcery'
-```
-
-## Build and run the application
+### Build and run the application
 
 The security is important, and the api keys should be generated with your marvel user.
 
