@@ -1,6 +1,6 @@
 import Foundation
 
-struct CharacterList: Codable {
+struct Character: Codable {
 	let comics: Comic?
 	let descriptionField: String?
 	let events: Comic?

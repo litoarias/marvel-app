@@ -1,15 +1,8 @@
-//
-//  APIRouter.swift
-//  MarvelApp
-//
-//  Created by Hipolito Arias on 4/12/20.
-//
-
 import Alamofire
 
 enum APIRouter: URLRequestConvertible {
 	
-	case getCharacters(Int, Int)
+	case getCharacters(Page)
 	
 	private var method: HTTPMethod {
 		switch self {
@@ -27,12 +20,12 @@ enum APIRouter: URLRequestConvertible {
 	
 	private var parameters: Parameters? {
 		switch self {
-		case .getCharacters(let limit, let offset):
+		case .getCharacters(let page):
 			return [
-				NetworkConstants.ParameterKey.limit.rawValue: limit,
-				NetworkConstants.ParameterKey.offset.rawValue: offset,
+				NetworkConstants.ParameterKey.limit.rawValue: page.limit,
+				NetworkConstants.ParameterKey.offset.rawValue: page.offset,
 				NetworkConstants.ParameterKey.apikey.rawValue: credentials.publicApiKey,
-				NetworkConstants.ParameterKey.ts.rawValue: credentials.timestamp,
+				NetworkConstants.ParameterKey.timestamp.rawValue: credentials.timestamp,
 				NetworkConstants.ParameterKey.hash.rawValue: credentials.hash
 			]
 		}

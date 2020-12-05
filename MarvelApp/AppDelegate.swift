@@ -1,4 +1,3 @@
-
 import UIKit
 
 @main
@@ -14,10 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let navigation = UINavigationController(rootViewController: controller)
 		
 		window?.rootViewController = navigation
-		window?.backgroundColor = .white //UIColor("#2A2C45")
+		window?.backgroundColor = .white
 		window?.makeKeyAndVisible()
 		
 		return true
 	}
 }
-
