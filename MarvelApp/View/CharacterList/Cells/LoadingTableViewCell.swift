@@ -1,10 +1,3 @@
-//
-//  LoadingTableViewCell.swift
-//  MarvelApp
-//
-//  Created by Hipolito Arias on 5/12/20.
-//
-
 import UIKit
 
 class LoadingTableViewCell: UITableViewCell {
