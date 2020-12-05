@@ -21,6 +21,7 @@
 		415638DD257BD0610029C509 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638DC257BD0610029C509 /* CharacterListViewModel.swift */; };
 		415638E2257BD5800029C509 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638E1257BD5800029C509 /* Client.swift */; };
 		415638EB257BDEAC0029C509 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638EA257BDEAC0029C509 /* Observable.swift */; };
+		415638FE257BFDD20029C509 /* ClientContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638FD257BFDD20029C509 /* ClientContract.swift */; };
 		41A3F2FE257A664300C75DD6 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F2FD257A664300C75DD6 /* String+md5.swift */; };
 		41A3F316257A794B00C75DD6 /* CharacterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F310257A794B00C75DD6 /* CharacterRequest.swift */; };
 		41A3F317257A794B00C75DD6 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3F311257A794B00C75DD6 /* Thumbnail.swift */; };
@@ -77,6 +78,7 @@
 		415638DC257BD0610029C509 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		415638E1257BD5800029C509 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		415638EA257BDEAC0029C509 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		415638FD257BFDD20029C509 /* ClientContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientContract.swift; sourceTree = "<group>"; };
 		41A3F2FD257A664300C75DD6 /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		41A3F310257A794B00C75DD6 /* CharacterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRequest.swift; sourceTree = "<group>"; };
 		41A3F311257A794B00C75DD6 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
@@ -244,6 +246,23 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		415638F8257BFDB40029C509 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				415638FC257BFDBB0029C509 /* ClientContract */,
+				415638E1257BD5800029C509 /* Client.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		415638FC257BFDBB0029C509 /* ClientContract */ = {
+			isa = PBXGroup;
+			children = (
+				415638FD257BFDD20029C509 /* ClientContract.swift */,
+			);
+			path = ClientContract;
+			sourceTree = "<group>";
+		};
 		41A3F2FC257A663800C75DD6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,7 +334,7 @@
 				4121F612257A9AA9002DAED9 /* NetworkConstants.swift */,
 				4121F617257A9AC7002DAED9 /* APIRouter.swift */,
 				41E88939257A8C69001E0E3C /* Session+PromiseKit.swift */,
-				415638E1257BD5800029C509 /* Client.swift */,
+				415638F8257BFDB40029C509 /* Clients */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -580,6 +599,7 @@
 				41A3F31B257A794B00C75DD6 /* CharacterData.swift in Sources */,
 				4121F618257A9AC7002DAED9 /* APIRouter.swift in Sources */,
 				41A3F2FE257A664300C75DD6 /* String+md5.swift in Sources */,
+				415638FE257BFDD20029C509 /* ClientContract.swift in Sources */,
 				41A3F316257A794B00C75DD6 /* CharacterRequest.swift in Sources */,
 				415638A1257BCD9B0029C509 /* Environment.generated.swift in Sources */,
 				41A3F31A257A794B00C75DD6 /* Comic.swift in Sources */,

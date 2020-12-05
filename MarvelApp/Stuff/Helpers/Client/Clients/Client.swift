@@ -1,10 +1,6 @@
 import Alamofire
 import PromiseKit
 
-protocol APIProtocol: class {
-	func getCharacters(_ page: Page) -> Promise<CharacterRequest>
-}
-
 class Client: APIProtocol {
 	private let session = Session()
 	func getCharacters(_ page: Page) -> Promise<CharacterRequest> {
