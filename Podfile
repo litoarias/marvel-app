@@ -10,7 +10,11 @@ target 'MarvelApp' do
 	pod 'PromiseKit/CorePromise'
 	pod 'Sourcery'
 	pod 'PagedLists', :git => 'https://github.com/litoarias/PagedLists'
-
+	
+	target 'MarvelAppTests' do
+		inherit! :search_paths
+		use_frameworks!
+	end
 	
 	post_install do |pi|
 		pi.pods_project.targets.each do |t|

@@ -1,0 +1,4 @@
+#include "Pods/Target Support Files/Pods-MarvelApp/Pods-MarvelApp.mock.xcconfig"
+
+APP_NAME = Marvel(mock)
+APP_BUNDLE_ID = com.kairosds.hipolito.MarvelApp.mock
