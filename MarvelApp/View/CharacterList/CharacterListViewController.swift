@@ -3,23 +3,21 @@ import PromiseKit
 import Alamofire
 import PagedLists
 
-let defaultLimit = 100
-
 final class CharacterListViewController: UIViewController {
 	
 	// MARK: - Properties
 	
 	var tableView = PagedTableView(frame: .zero)
-	private let apiSession = Session()
-	private var currentPage: Page = Page(limit: defaultLimit, offset: 0)
+	
 	private var characterList = [Character]()
-	var viewModel: CharacterListViewModel!
-
+	var viewModel: CharacterListViewModel?
+	
 	// MARK: - Life cycle
 	
 	init(viewModel: CharacterListViewModel) {
 		super.init(nibName: nil, bundle: nil)
 		self.viewModel = viewModel
+		bindProperties()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -81,44 +79,52 @@ extension CharacterListViewController: UITableViewDataSource {
 
 extension CharacterListViewController: PagedTableViewDelegate {
 	func tableView(_ tableView: PagedTableView, needsDataForPage page: Int, completion: @escaping (Int, NSError?) -> Void) {
-		cleanFunc(completion)
+		viewModel?.fetchCharacters(completion)
 	}
 }
 
 // MARK: - Private Methods
 
 extension CharacterListViewController {
-	func cleanFunc(_ completion: ((Int, NSError?) -> Void)?) {
-		firstly {
-			self.getCharacters()
-		}.then {
-			self.reloadItems($0, completion: completion ?? {_,_ in})
-		}.catch {
-			debugPrint($0)
-		}.finally {
+	
+	private func bindProperties() {
+		viewModel?.hasMore.bind({ [weak self] hasMore in
+			guard let self = self else { return }
+			self.tableView.hasMore = hasMore ?? false
+		})
+		viewModel?.characters.bind({ [weak self] newItems in
+			guard let self = self else { return }
+			debugPrint(self.characterList.count)
+			self.characterList += newItems ?? []
+			debugPrint(self.characterList.count)
+		})
+		viewModel?.reload.bind({ [weak self] _ in
+			guard let self = self else { return }
 			self.tableView.reloadData()
-		}
+		})
 	}
 	
-	func getCharacters() -> Promise<CharacterRequest> {
-		let (promise, seal) = Promise<CharacterRequest>.pending()
-		apiSession.request(.getCharacters(currentPage)).done { (characters: CharacterRequest) in
-			seal.fulfill((characters))
-		}.catch { error in
-			seal.reject(error)
-		}
-		return promise
-	}
-	
-	func reloadItems(_ list: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<Int> {
-		let (promise, seal) = Promise<Int>.pending()
-		currentPage.offset += list.data?.count ?? 0
-		self.characterList += list.data?.results ?? []
-		let loadmore = currentPage.offset < defaultLimit
-		tableView.hasMore = loadmore
-		completion(list.data?.count ?? 0, nil)
-		seal.fulfill(currentPage.offset)
-		return promise
-	}
+	//	func fetchCharacters(_ completion: ((Int, NSError?) -> Void)?) {
+	//		firstly {
+	//			session.getCharacters(currentPage)
+	//		}.then {
+	//			self.reloadItems($0, completion: completion ?? {_,_ in})
+	//		}.catch {
+	//			debugPrint($0)
+	//		}.finally {
+	//			self.tableView.reloadData()
+	//		}
+	//	}
+	//
+	//	func reloadItems(_ list: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<Int> {
+	//		let (promise, seal) = Promise<Int>.pending()
+	//		currentPage.offset += list.data?.count ?? 0
+	//		self.characterList += list.data?.results ?? []
+	//		let loadmore = currentPage.offset < defaultLimit
+	//		tableView.hasMore = loadmore
+	//		completion(list.data?.count ?? 0, nil)
+	//		seal.fulfill(currentPage.offset)
+	//		return promise
+	//	}
 	
 }
