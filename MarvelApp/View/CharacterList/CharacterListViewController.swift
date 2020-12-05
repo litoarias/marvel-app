@@ -9,31 +9,26 @@ final class CharacterListViewController: UIViewController {
 	
 	// MARK: - Properties
 	
-	private var tableView = PagedTableView(frame: .zero)
+	var tableView = PagedTableView(frame: .zero)
 	private let apiSession = Session()
 	private var currentPage: Page = Page(limit: defaultLimit, offset: 0)
 	private var characterList = [Character]()
-	
+	var viewModel: CharacterListViewModel!
+
 	// MARK: - Life cycle
+	
+	init(viewModel: CharacterListViewModel) {
+		super.init(nibName: nil, bundle: nil)
+		self.viewModel = viewModel
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 	override func loadView() {
 		super.loadView()
-		
-		view.addSubview(tableView)
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-		tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-		tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-		tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
-		tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.className)
-		tableView.dataSource = self
-		tableView.rowHeight = UITableView.automaticDimension
-		tableView.estimatedRowHeight = UITableView.automaticDimension
-		tableView.elementsPerPage = defaultLimit
-		tableView.updateDelegate = self
-		tableView.tableFooterView = UIView()
-
+		setupViews()
 	}
 	
 }
