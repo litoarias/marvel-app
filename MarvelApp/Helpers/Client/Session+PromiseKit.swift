@@ -1,14 +1,8 @@
-//
-//  Session+PromiseKit.swift
-//  MarvelApp
-//
-//  Created by Hipolito Arias on 4/12/20.
-//
-
 import Alamofire
 import PromiseKit
 
 extension Session {
+	//swiftlint:disable:next cyclomatic_complexity
 	func request<T: Codable>(_ urlConvertible: APIRouter) -> Promise<T> {
 		return Promise<T> { seal in
 			request(urlConvertible).responseDecodable { (response: DataResponse<T, AFError>) in

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Url: Codable {
+struct ChracterUrl: Codable {
 	let type: String?
 	let url: String?
 }
