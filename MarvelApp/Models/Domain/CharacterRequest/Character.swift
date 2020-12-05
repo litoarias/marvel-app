@@ -1,4 +1,3 @@
-
 import Foundation
 
 struct CharacterList: Codable {
@@ -12,5 +11,5 @@ struct CharacterList: Codable {
 	let series: Comic?
 	let stories: Comic?
 	let thumbnail: Thumbnail?
-	let urls: [Url]?
+	let urls: [ChracterUrl]?
 }
