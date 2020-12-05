@@ -40,11 +40,11 @@ export MARVEL_PUBLIC_API_KEY=YOUR_PUBLIC_API_KEY
 export MARVEL_PRIVATE_API_KEY=YOUR_PRIVATE_API_KEY
 ```
 
-Then you can find a file located on `MarvelApp/Environment/Environment.generated.swift` with the red text colour, and you must remove it to be able to compile project.
+Then you can go to Xcode and **find** a file located on `MarvelApp/Stuff/Environment/Environment.generated.swift` with **the red text colour**, and you must **remove it** to be able to compile project.
 
-`Sourcery` will generate a configuration file with these credentials, but take in account when you compiling the project, the `Environment.generated.swift` file is missed, and `Sourcery` needs compile the project without errors to be able to generate the `Environment.generated.swift` file. 
+> `Sourcery` will generate a configuration file with these credentials, but take in account when you compiling the project, the `Environment.generated.swift` **file is missed**, and `Sourcery` needs compile the project without errors to be able to generate the `Environment.generated.swift` file. 
 
-Because of that, you need to comment the next lines of code on file `APIRouter.swift`:
+Because of that, you need to **comment** the next lines of code on file `APIRouter.swift`:
 
 ```swift
 private var parameters: Parameters? {
@@ -61,6 +61,6 @@ private var parameters: Parameters? {
 }
 ```
 
-Now you can build project and a new file will be generated on `Environment` folder, you can found it on your Finder and you'll drag and drop on Xcode, the file should be placed in `Environment` folder of the project, then you can uncomment the code on file `APIRouter.swift`.
+Now you can **build project** and a new file **will be generated on `Environment`** folder, you can found it on your **Finder** and you'll drag and drop on Xcode, the file should be placed in `Environment` folder of the project, then you can **uncomment** the code on file `APIRouter.swift`.
 
-The application should be compiling!
+The application should be compiling! 🍺🍻
