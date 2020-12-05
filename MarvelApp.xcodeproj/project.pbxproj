@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		410D1F012579A84C00D1F287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D1F002579A84C00D1F287 /* AppDelegate.swift */; };
-		410D1F052579A84C00D1F287 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D1F042579A84C00D1F287 /* ViewController.swift */; };
+		410D1F052579A84C00D1F287 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D1F042579A84C00D1F287 /* CharacterListViewController.swift */; };
 		410D1F0A2579A85300D1F287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410D1F092579A85300D1F287 /* Assets.xcassets */; };
 		410D1F0D2579A85300D1F287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410D1F0B2579A85300D1F287 /* LaunchScreen.storyboard */; };
 		410D1F182579A85400D1F287 /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D1F172579A85400D1F287 /* MarvelAppTests.swift */; };
@@ -54,7 +54,7 @@
 		2C22A30F17B675FA1F7C731E /* Pods_MarvelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		410D1EFD2579A84C00D1F287 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		410D1F002579A84C00D1F287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		410D1F042579A84C00D1F287 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		410D1F042579A84C00D1F287 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		410D1F092579A85300D1F287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410D1F0C2579A85300D1F287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410D1F0E2579A85300D1F287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,13 +134,11 @@
 		410D1EFF2579A84C00D1F287 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
-				410D1F002579A84C00D1F287 /* AppDelegate.swift */,
-				410D1F042579A84C00D1F287 /* ViewController.swift */,
-				41C5BDC8257BB5700061A5EB /* LoadingTableViewCell.swift */,
-				41E88902257A8528001E0E3C /* Environment */,
-				41A3F302257A682500C75DD6 /* Models */,
-				41A3F2FC257A663800C75DD6 /* Utils */,
-				41E88927257A8AC6001E0E3C /* Helpers */,
+				414382DF257BCB0B00EF93E1 /* Application */,
+				41A3F302257A682500C75DD6 /* Model */,
+				414382D0257BC98200EF93E1 /* View */,
+				414382D1257BC99000EF93E1 /* ViewModel */,
+				414382E0257BCB2400EF93E1 /* Stuff */,
 				410D1F092579A85300D1F287 /* Assets.xcassets */,
 				410D1F0B2579A85300D1F287 /* LaunchScreen.storyboard */,
 				410D1F0E2579A85300D1F287 /* Info.plist */,
@@ -166,6 +164,56 @@
 			path = MarvelAppUITests;
 			sourceTree = "<group>";
 		};
+		414382D0257BC98200EF93E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				414382DD257BCAFA00EF93E1 /* CharacterList */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		414382D1257BC99000EF93E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		414382DD257BCAFA00EF93E1 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				410D1F042579A84C00D1F287 /* CharacterListViewController.swift */,
+				414382DE257BCB0400EF93E1 /* Cells */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		414382DE257BCB0400EF93E1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				41C5BDC8257BB5700061A5EB /* LoadingTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		414382DF257BCB0B00EF93E1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				410D1F002579A84C00D1F287 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		414382E0257BCB2400EF93E1 /* Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				41E88902257A8528001E0E3C /* Environment */,
+				41A3F2FC257A663800C75DD6 /* Utils */,
+				41E88927257A8AC6001E0E3C /* Helpers */,
+			);
+			path = Stuff;
+			sourceTree = "<group>";
+		};
 		41A3F2FC257A663800C75DD6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,13 +222,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		41A3F302257A682500C75DD6 /* Models */ = {
+		41A3F302257A682500C75DD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				41FA9BCE257AE27B006083CB /* Bussines */,
 				41A3F303257A682B00C75DD6 /* Domain */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		41A3F303257A682B00C75DD6 /* Domain */ = {
@@ -225,7 +273,6 @@
 		41E88927257A8AC6001E0E3C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				41E8893E257A8CBC001E0E3C /* NetworkErrors */,
 				41E88928257A8AD2001E0E3C /* Client */,
 			);
 			path = Helpers;
@@ -234,6 +281,7 @@
 		41E88928257A8AD2001E0E3C /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				41E8893E257A8CBC001E0E3C /* NetworkErrors */,
 				4121F612257A9AA9002DAED9 /* NetworkConstants.swift */,
 				4121F617257A9AC7002DAED9 /* APIRouter.swift */,
 				41E88939257A8C69001E0E3C /* Session+PromiseKit.swift */,
@@ -438,7 +486,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#check if env-vars.sh exists\necho \"${SRCROOT}/env-vars.sh\"\n\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\necho \"I am here\"\nsource ${SRCROOT}/env-vars.sh\nfi\n\n#no `else` case needed if the CI works as expected\n${SRCROOT}/Pods/Sourcery/bin/sourcery --templates ${SRCROOT}/MarvelApp --sources ${SRCROOT} --output ${SRCROOT}/MarvelApp/Environment --args publicApiKey=$MARVEL_PUBLIC_API_KEY,privateApiKey=$MARVEL_PRIVATE_API_KEY\n";
+			shellScript = "#check if env-vars.sh exists\necho \"${SRCROOT}/env-vars.sh\"\n\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\necho \"I am here\"\nsource ${SRCROOT}/env-vars.sh\nfi\n\n#no `else` case needed if the CI works as expected\n${SRCROOT}/Pods/Sourcery/bin/sourcery --templates ${SRCROOT}/MarvelApp --sources ${SRCROOT} --output ${SRCROOT}/MarvelApp/Stuff/Environment --args publicApiKey=$MARVEL_PUBLIC_API_KEY,privateApiKey=$MARVEL_PRIVATE_API_KEY\n";
 		};
 		8C667F5B8EC3EA6BD8EE0099 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -491,7 +539,7 @@
 				41E8894B257A8CDC001E0E3C /* NetworkError.swift in Sources */,
 				41FA9BD0257AE2AD006083CB /* Page.swift in Sources */,
 				41A3F319257A794B00C75DD6 /* Character.swift in Sources */,
-				410D1F052579A84C00D1F287 /* ViewController.swift in Sources */,
+				410D1F052579A84C00D1F287 /* CharacterListViewController.swift in Sources */,
 				41E8893A257A8C6A001E0E3C /* Session+PromiseKit.swift in Sources */,
 				41201BF2257AD98F00BEBFAB /* Environment.generated.swift in Sources */,
 				410D1F012579A84C00D1F287 /* AppDelegate.swift in Sources */,

@@ -5,13 +5,16 @@ import PagedLists
 
 let defaultLimit = 100
 
-class ViewController: UIViewController {
+final class CharacterListViewController: UIViewController {
 	
+	// MARK: - Properties
+	
+	private var tableView = PagedTableView(frame: .zero)
 	private let apiSession = Session()
 	private var currentPage: Page = Page(limit: defaultLimit, offset: 0)
+	private var characterList = [Character]()
 	
-	var tableView = PagedTableView(frame: .zero)
-	var characterList = [Character]()
+	// MARK: - Life cycle
 	
 	override func loadView() {
 		super.loadView()
@@ -33,6 +36,63 @@ class ViewController: UIViewController {
 
 	}
 	
+}
+
+// MARK: - UITableViewDelegate
+
+extension CharacterListViewController: UITableViewDelegate {
+}
+
+// MARK: - Data Source
+
+extension CharacterListViewController: UITableViewDataSource {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == 0 {
+			return characterList.count
+		} else if section == 1 && self.tableView.hasMore {
+			return 1
+		} else {
+			return 0
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.section == 0 {
+			return UITableView.automaticDimension
+		} else {
+			return 90
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath) as UITableViewCell
+			cell.textLabel?.text = "\(indexPath.row): \(self.characterList[indexPath.row].name ?? "\(indexPath.row)")"
+			return cell
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.className, for: indexPath) as? LoadingTableViewCell
+			cell?.activityIndicator.startAnimating()
+			return cell ?? LoadingTableViewCell()
+		}
+	}
+}
+
+// MARK: - PagedTableViewDelegate
+
+extension CharacterListViewController: PagedTableViewDelegate {
+	func tableView(_ tableView: PagedTableView, needsDataForPage page: Int, completion: @escaping (Int, NSError?) -> Void) {
+		cleanFunc(completion)
+	}
+}
+
+// MARK: - Private Methods
+
+extension CharacterListViewController {
 	func cleanFunc(_ completion: ((Int, NSError?) -> Void)?) {
 		firstly {
 			self.getCharacters()
@@ -66,51 +126,4 @@ class ViewController: UIViewController {
 		return promise
 	}
 	
-}
-
-// MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.section == 0 {
-			return UITableView.automaticDimension
-		} else {
-			return 90
-		}
-	}
-}
-
-// MARK: - Data Source
-extension ViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
-			return characterList.count
-		} else if section == 1 && self.tableView.hasMore {
-			return 1
-		} else {
-			return 0
-		}
-	}
-	
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 2
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath) as UITableViewCell
-			cell.textLabel?.text = "\(indexPath.row): \(self.characterList[indexPath.row].name ?? "\(indexPath.row)")"
-			return cell
-		} else {
-			let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.className, for: indexPath) as? LoadingTableViewCell
-			cell?.activityIndicator.startAnimating()
-			return cell ?? LoadingTableViewCell()
-		}
-	}
-}
-
-extension ViewController: PagedTableViewDelegate {
-	
-	func tableView(_ tableView: PagedTableView, needsDataForPage page: Int, completion: @escaping (Int, NSError?) -> Void) {
-		cleanFunc(completion)
-	}
 }

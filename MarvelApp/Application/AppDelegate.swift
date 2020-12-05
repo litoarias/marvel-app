@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
-		let controller = ViewController()
+		let controller = CharacterListViewController()
 		let navigation = UINavigationController(rootViewController: controller)
 		
 		window?.rootViewController = navigation
