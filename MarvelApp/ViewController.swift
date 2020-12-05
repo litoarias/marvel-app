@@ -3,13 +3,12 @@ import PromiseKit
 import Alamofire
 import PagedLists
 
-let defaultLimit = 60
+let defaultLimit = 100
 
 class ViewController: UIViewController {
 	
 	private let apiSession = Session()
 	private var currentPage: Page = Page(limit: defaultLimit, offset: 0)
-	private var stop: Bool = false
 	
 	var tableView = PagedTableView(frame: .zero)
 	var characterList = [Character]()
@@ -30,7 +29,8 @@ class ViewController: UIViewController {
 		tableView.estimatedRowHeight = UITableView.automaticDimension
 		tableView.elementsPerPage = defaultLimit
 		tableView.updateDelegate = self
-		
+		tableView.tableFooterView = UIView()
+
 	}
 	
 	func cleanFunc(_ completion: ((Int, NSError?) -> Void)?) {
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 		}.catch {
 			debugPrint($0)
 		}.finally {
-			debugPrint("Finished")
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -57,11 +57,12 @@ class ViewController: UIViewController {
 	
 	func reloadItems(_ list: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<Int> {
 		let (promise, seal) = Promise<Int>.pending()
-		completion(list.data?.count ?? 0, nil)
 		currentPage.offset += list.data?.count ?? 0
 		self.characterList += list.data?.results ?? []
-		self.tableView.reloadData()
-		seal.fulfill(list.data?.count ?? 0)
+		let loadmore = currentPage.offset < defaultLimit
+		tableView.hasMore = loadmore
+		completion(list.data?.count ?? 0, nil)
+		seal.fulfill(currentPage.offset)
 		return promise
 	}
 	
@@ -73,7 +74,7 @@ extension ViewController: UITableViewDelegate {
 		if indexPath.section == 0 {
 			return UITableView.automaticDimension
 		} else {
-			return 65
+			return 90
 		}
 	}
 }
@@ -83,7 +84,7 @@ extension ViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if section == 0 {
 			return characterList.count
-		} else if section == 1 {
+		} else if section == 1 && self.tableView.hasMore {
 			return 1
 		} else {
 			return 0
@@ -96,7 +97,7 @@ extension ViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LoadingTableViewCell.self), for: indexPath) as UITableViewCell
+			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath) as UITableViewCell
 			cell.textLabel?.text = "\(indexPath.row): \(self.characterList[indexPath.row].name ?? "\(indexPath.row)")"
 			return cell
 		} else {
