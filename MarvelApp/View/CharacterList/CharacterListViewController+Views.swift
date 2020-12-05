@@ -1,6 +1,7 @@
 import UIKit
 
 extension CharacterListViewController {
+	
 	func setupViews() {
 		setupTable()
 	}
