@@ -340,20 +340,12 @@
 		41E88928257A8AD2001E0E3C /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				41E8893E257A8CBC001E0E3C /* NetworkErrors */,
+				415638F8257BFDB40029C509 /* Clients */,
+				41E8894A257A8CDC001E0E3C /* NetworkError.swift */,
 				4121F612257A9AA9002DAED9 /* NetworkConstants.swift */,
 				4121F617257A9AC7002DAED9 /* APIRouter.swift */,
-				415638F8257BFDB40029C509 /* Clients */,
 			);
 			path = Client;
-			sourceTree = "<group>";
-		};
-		41E8893E257A8CBC001E0E3C /* NetworkErrors */ = {
-			isa = PBXGroup;
-			children = (
-				41E8894A257A8CDC001E0E3C /* NetworkError.swift */,
-			);
-			path = NetworkErrors;
 			sourceTree = "<group>";
 		};
 		41FA9BCE257AE27B006083CB /* Bussines */ = {
