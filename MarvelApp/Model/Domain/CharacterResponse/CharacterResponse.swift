@@ -1,6 +1,6 @@
 import Foundation
 
-struct CharacterRequest: Codable {
+struct CharacterResponse: Codable {
 	let attributionHTML: String?
 	let attributionText: String?
 	let code: Int?

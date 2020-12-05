@@ -24,4 +24,8 @@ struct NetworkConstants {
 	enum HTTPHeaderFieldValue: String {
 		case json = "application/json"
 	}
+	
+	enum Mock: String {
+		case charactersRequest = "characters-response"
+	}
 }

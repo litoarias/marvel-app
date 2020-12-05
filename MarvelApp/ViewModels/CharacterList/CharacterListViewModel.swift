@@ -24,21 +24,22 @@ final class CharacterListViewModel: CharacterListProtocol {
 		}.then {
 			self.appendData($0, completion: $1)
 		}.catch {
+			#warning("Please do unhappy path!!")
 			debugPrint($0)
 		}.finally {
 			self.reload.value = ()
 		}
 	}
 	
-	private func incrementPage(_ request: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<(CharacterRequest, completion: (Int, NSError?) -> Void)> {
-		let (promise, seal) = Promise<(CharacterRequest, completion: (Int, NSError?) -> Void)>.pending()
+	private func incrementPage(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)> {
+		let (promise, seal) = Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)>.pending()
 		currentPage.offset += request.data?.count ?? 0
 		hasMore.value = (currentPage.offset < defaultLimit)
 		seal.fulfill((request, completion))
 		return promise
 	}
 	
-	private func appendData(_ request: CharacterRequest, completion: @escaping (Int, NSError?) -> Void) -> Promise<Void> {
+	private func appendData(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<Void> {
 		let (promise, seal) = Promise<Void>.pending()
 		characters.value = (request.data?.results ?? [])
 		completion(request.data?.count ?? 0, nil)

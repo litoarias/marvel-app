@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PagedLists:
-    :commit: 14451e1a70885895e6e3797ba29d8b337587f3c1
+    :commit: 4aedc27bf2faedc703f028adfc7767339412941a
     :git: https://github.com/litoarias/PagedLists
 
 SPEC CHECKSUMS:
