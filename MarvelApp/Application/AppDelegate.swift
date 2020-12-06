@@ -9,8 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
-		let client = Client()
-		let viewModel = CharacterListViewModel(client)
+		var viewModel: CharacterListViewModel!
+
+		#if MOCK
+		viewModel = CharacterListViewModel(ClientMock())
+		#else
+		viewModel = CharacterListViewModel(Client())
+		#endif
+		
 		let controller = CharacterListViewController(viewModel: viewModel)
 		let navigation = UINavigationController(rootViewController: controller)
 		

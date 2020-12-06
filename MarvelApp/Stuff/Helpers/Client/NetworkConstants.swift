@@ -25,7 +25,14 @@ struct NetworkConstants {
 		case json = "application/json"
 	}
 	
-	enum Mock: String {
-		case charactersRequest = "characters-response"
+	enum Mock {
+		case charactersRequest(Page)
+		
+		var path: String {
+			switch self {
+			case .charactersRequest(let page):
+				return "characters-offset\(page.offset)-limit\(page.limit)"
+			}
+		}
 	}
 }

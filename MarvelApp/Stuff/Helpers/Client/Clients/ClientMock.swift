@@ -10,7 +10,7 @@ final class ClientMock: APIProtocol {
 		switch error {
 		case nil:
 			guard let characters = Bundle.parse(
-				fileName: NetworkConstants.Mock.charactersRequest.rawValue,
+				fileName: NetworkConstants.Mock.charactersRequest(page).path,
 				type: CharacterResponse.self
 			) else {
 				fatalError("CharacterResponse is required!")

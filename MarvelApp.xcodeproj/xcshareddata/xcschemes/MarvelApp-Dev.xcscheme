@@ -26,7 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "410D1EFC2579A84C00D1F287"
+            BuildableName = "MarvelApp.app"
+            BlueprintName = "MarvelApp"
+            ReferencedContainer = "container:MarvelApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,16 +46,6 @@
                BlueprintIdentifier = "410D1F122579A85300D1F287"
                BuildableName = "MarvelAppTests.xctest"
                BlueprintName = "MarvelAppTests"
-               ReferencedContainer = "container:MarvelApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "410D1F1D2579A85400D1F287"
-               BuildableName = "MarvelAppUITests.xctest"
-               BlueprintName = "MarvelAppUITests"
                ReferencedContainer = "container:MarvelApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,7 +73,7 @@
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -92,7 +93,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
