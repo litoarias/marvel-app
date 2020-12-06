@@ -29,16 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "410D1F122579A85300D1F287"
-               BuildableName = "MarvelAppTests.xctest"
-               BlueprintName = "MarvelAppTests"
-               ReferencedContainer = "container:MarvelApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -1,6 +1,6 @@
 import Foundation
 
-enum ApiError: Error {
+enum ApiError: Error, Equatable {
 	
 	case noInternet
 	case forbidden
