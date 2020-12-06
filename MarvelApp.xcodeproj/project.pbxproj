@@ -415,8 +415,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 410D1F272579A85400D1F287 /* Build configuration list for PBXNativeTarget "MarvelApp" */;
 			buildPhases = (
-				41D280FF257A42E700B4659B /* Environment */,
 				B7156E4C06C9402E6BB8DD12 /* [CP] Check Pods Manifest.lock */,
+				41D280FF257A42E700B4659B /* Environment */,
 				410D1EF92579A84C00D1F287 /* Sources */,
 				410D1EFA2579A84C00D1F287 /* Frameworks */,
 				410D1EFB2579A84C00D1F287 /* Resources */,
