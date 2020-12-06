@@ -10,7 +10,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
 		var viewModel: CharacterListViewModel!
-
 		#if MOCK || XCTEST
 		viewModel = CharacterListViewModel(ClientMock())
 		#else

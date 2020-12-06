@@ -1,6 +1,7 @@
 import Foundation
 
 enum ApiError: Error {
+	
 	case noInternet
 	case forbidden
 	case notFound
