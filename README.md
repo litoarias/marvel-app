@@ -10,7 +10,7 @@ The application is made using the [Marvel API](https://developer.marvel.com), in
 * `Third party libraries`:
 	* `Alamofire` The Network layer
 	* `Sourcery` Secure credential handling
-	* `PromiseKit` More readable syntax
+	* `PromiseKit` More readable syntax and simplify asynchronous programming
 	* `PagedLists` Class for manage an infinite scrolling
 
 ## Run Requirements
