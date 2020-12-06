@@ -7,11 +7,10 @@ final class ClientMock: APIProtocol {
 	
 	func getCharacters(_ page: Page) -> Promise<CharacterResponse> {
 		let (promise, seal) = Promise<CharacterResponse>.pending()
-		
 		switch error {
 		case nil:
 			guard let characters = Bundle.parse(
-				fileName: NetworkConstants.Mock.charactersRequest.rawValue,
+				fileName: NetworkConstants.Mock.charactersRequest(page).path,
 				type: CharacterResponse.self
 			) else {
 				fatalError("CharacterResponse is required!")
