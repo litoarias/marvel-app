@@ -2,6 +2,8 @@ platform :ios, '11.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
+xcodeproj 'MarvelApp.xcodeproj', 'xctest' => :debug
+install! 'cocoapods', :deterministic_uuids => false
 
 target 'MarvelApp' do
 	use_frameworks!
@@ -14,6 +16,7 @@ target 'MarvelApp' do
 	target 'MarvelAppTests' do
 		inherit! :search_paths
 		use_frameworks!
+
 	end
 	
 	post_install do |pi|

@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		var viewModel: CharacterListViewModel!
 
-		#if MOCK
+		#if MOCK || XCTEST
 		viewModel = CharacterListViewModel(ClientMock())
 		#else
 		viewModel = CharacterListViewModel(Client())
