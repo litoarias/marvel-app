@@ -5,7 +5,7 @@ let defaultLimit = 50
 final class CharacterListViewModel: CharacterListProtocol {
 	
 	private let session: APIProtocol?
-	private var currentPage: Page = Page(limit: defaultLimit, offset: 0)
+	var currentPage: Page = Page(limit: defaultLimit, offset: 0)
 	
 	var hasMore: Observable<Bool?> = Observable(true)
 	var characters: Observable<[Character]?> = Observable([])
@@ -25,7 +25,7 @@ final class CharacterListViewModel: CharacterListProtocol {
 		}.then {
 			self.appendData($0, completion: $1)
 		}.catch {
-			self.errorMessage.value = ($0 as? ApiError)?.errorDescription
+			self.setError(($0 as? ApiError ?? ApiError.unknown), completion: completion)
 		}.finally {
 			self.reload.value = ()
 		}
@@ -33,7 +33,6 @@ final class CharacterListViewModel: CharacterListProtocol {
 	
 	private func incrementPage(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)> {
 		let (promise, seal) = Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)>.pending()
-		
 		currentPage.offset += request.data?.count ?? 0
 		hasMore.value = (currentPage.offset < defaultLimit)
 		seal.fulfill((request, completion))
@@ -43,11 +42,15 @@ final class CharacterListViewModel: CharacterListProtocol {
 	
 	private func appendData(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<Void> {
 		let (promise, seal) = Promise<Void>.pending()
-		
 		characters.value = (request.data?.results ?? [])
 		completion(request.data?.count ?? 0, nil)
 		seal.fulfill(())
 		
 		return promise
+	}
+	
+	private func setError(_ error: ApiError, completion: @escaping (Int, NSError?) -> Void) {
+		self.errorMessage.value = error.errorDescription
+		completion(0, error as NSError)
 	}
 }
