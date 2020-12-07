@@ -2,12 +2,15 @@ import PromiseKit
 
 final class CharacterDetailViewModel: CharacterDetailProtocol {
 	
+	// MARK: - PROPERTIES
+	
 	var comics: Observable<ComicsResponse?> = Observable(nil)
 	var series: Observable<SeriesResponse?> = Observable(nil)
 	var stories: Observable<StoriesResponse?> = Observable(nil)
 	var errorMessage: Observable<String?> = Observable(nil)
-	
 	private let session: APIProtocol?
+	
+	// MARK: - LIFE CYCLE
 	
 	init(_ session: APIProtocol) {
 		self.session = session
@@ -19,6 +22,8 @@ final class CharacterDetailViewModel: CharacterDetailProtocol {
 
 extension CharacterDetailViewModel {
 	
+	/// Simultaneous call to fetch `Comics`, `Series` and `Stories`
+	/// - Parameter identifier: Character identifier, needed to make request
 	func fetchData(identifier: Int) {
 		fetchComics(identifier: identifier)
 		fetchSeries(identifier: identifier)

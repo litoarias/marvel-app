@@ -4,6 +4,9 @@ struct NetworkConstants {
 	
 	enum Path: String {
 		case characters = "v1/public/characters"
+		case comics = "comics"
+		case series = "series"
+		case stories = "stories"
 	}
 	
 	enum ParameterKey: String {

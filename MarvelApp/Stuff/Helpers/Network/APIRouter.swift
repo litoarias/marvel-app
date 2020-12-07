@@ -25,11 +25,11 @@ enum APIRouter: URLRequestConvertible {
 		case .getCharacters:
 			return NetworkConstants.Path.characters.rawValue
 		case .getComics(let id, _):
-			return "v1/public/characters/\(id)/comics"
+			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.comics.rawValue
 		case .getSeries(let id, _):
-			return "v1/public/characters/\(id)/series"
+			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.series.rawValue
 		case .getStories(let id, _):
-			return "v1/public/characters/\(id)/stories"
+			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.stories.rawValue
 		}
 	}
 	
