@@ -62,7 +62,7 @@ extension CharacterListViewController {
 		viewModel?.errorMessage.bind({ [weak self] message in
 			guard let self = self else { return }
 			DispatchQueue.main.async {
-				!(message?.isEmpty ?? true) ? self.popupAlert(title: "Error", message: message) : nil
+				!(message?.isEmpty ?? true) ? self.popupAlert(title: "Error", message: message): nil
 			}
 		})
 	}

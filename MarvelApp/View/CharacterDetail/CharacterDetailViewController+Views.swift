@@ -148,7 +148,7 @@ extension CharacterDetailViewController {
 		layout.minimumLineSpacing = 20
 		layout.minimumInteritemSpacing = 20
 		layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		layout.itemSize = CGSize(width: 90, height: 90)
+		layout.itemSize = CGSize(width: 100, height: 100)
 		return layout
 	}
 }

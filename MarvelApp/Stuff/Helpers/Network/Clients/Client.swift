@@ -14,4 +14,8 @@ final class Client: APIProtocol {
 		}
 		return promise
 	}
+	
+	func getComics(_ page: Page) {
+		
+	}
 }
