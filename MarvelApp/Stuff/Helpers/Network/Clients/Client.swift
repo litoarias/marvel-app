@@ -15,7 +15,23 @@ final class Client: APIProtocol {
 		return promise
 	}
 	
-	func getComics(_ page: Page) {
-		
+	func getComics(_ page: Page, identifier: Int) -> Promise<ComicsResponse> {
+		let (promise, seal) = Promise<ComicsResponse>.pending()
+		session.request(.getComics(identifier, page)).done { (comics: ComicsResponse) in
+			seal.fulfill((comics))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
+	}
+	
+	func getSeries(_ page: Page, identifier: Int) -> Promise<SeriesResponse> {
+		let (promise, seal) = Promise<SeriesResponse>.pending()
+		session.request(.getSeries(identifier, page)).done { (series: SeriesResponse) in
+			seal.fulfill((series))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
 	}
 }

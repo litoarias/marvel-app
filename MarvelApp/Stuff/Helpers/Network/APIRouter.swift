@@ -3,13 +3,16 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
 	
 	case getCharacters(Page)
-	case getComics(String, Page)
+	case getComics(Int, Page)
+	case getSeries(Int, Page)
 	
 	private var method: HTTPMethod {
 		switch self {
 		case .getCharacters:
 			return .get
 		case .getComics:
+			return .get
+		case .getSeries:
 			return .get
 		}
 	}
@@ -20,6 +23,9 @@ enum APIRouter: URLRequestConvertible {
 			return NetworkConstants.Path.characters.rawValue
 		case .getComics(let id, _):
 			return "v1/public/characters/\(id)/comics"
+		case .getSeries(let id, _):
+			return "v1/public/characters/\(id)/series"
+
 		}
 	}
 	
@@ -33,7 +39,7 @@ enum APIRouter: URLRequestConvertible {
 				NetworkConstants.ParameterKey.timestamp.rawValue: credentials.timestamp,
 				NetworkConstants.ParameterKey.hash.rawValue: credentials.hash
 			]
-		case .getComics(_, let page):
+		case .getComics(_, let page), .getSeries(_, let page):
 			return [
 				NetworkConstants.ParameterKey.limit.rawValue: page.limit,
 				NetworkConstants.ParameterKey.offset.rawValue: page.offset,

@@ -22,4 +22,16 @@ final class ClientMock: APIProtocol {
 		
 		return promise
 	}
+	
+	func getComics(_ page: Page, identifier: Int) -> Promise<ComicsResponse> {
+		let (promise, seal) = Promise<ComicsResponse>.pending()
+		
+		return promise
+	}
+	
+	func getSeries(_ page: Page, identifier: Int) -> Promise<SeriesResponse> {
+		let (promise, seal) = Promise<SeriesResponse>.pending()
+		
+		return promise
+	}
 }
