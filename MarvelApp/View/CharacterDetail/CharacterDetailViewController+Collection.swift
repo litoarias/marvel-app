@@ -16,7 +16,7 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
 				
 		if collectionView == collectionComicsView {
 			
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.comicName, for: indexPath) as? ImageCollectionViewCell
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
 			let item = comics?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 			cell?.setup(thumbnail: item)
 			return cell ?? ImageCollectionViewCell()
@@ -24,15 +24,16 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
 		} else if collectionView == collectionSeriesView {
 		
 			let item = series?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.serieName, for: indexPath) as? ImageCollectionViewCell
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
 			cell?.setup(thumbnail: item)
 			return cell ?? ImageCollectionViewCell()
 		
 		} else {
-		
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-			cell.backgroundColor = .red
-			return cell
+			
+			let item = stories?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
+			cell?.setup(thumbnail: item)
+			return cell ?? ImageCollectionViewCell()
 			
 		}
 		

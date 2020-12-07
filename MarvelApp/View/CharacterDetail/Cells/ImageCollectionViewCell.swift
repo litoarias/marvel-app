@@ -5,8 +5,7 @@ final class ImageCollectionViewCell: UICollectionViewCell {
 	// MARK: - PROPERTIES
 
 	private var backgroungImage = UIImageView()
-	static let comicName = String(describing: ImageCollectionViewCell.self) //+ "Comics"
-	static let serieName = String(describing: ImageCollectionViewCell.self) //+ "Series"
+	static let className = String(describing: ImageCollectionViewCell.self)
 	
 	// MARK: - LIFE CYCLE
 	

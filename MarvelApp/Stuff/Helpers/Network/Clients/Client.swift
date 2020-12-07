@@ -34,4 +34,14 @@ final class Client: APIProtocol {
 		}
 		return promise
 	}
+	
+	func getStories(_ page: Page, identifier: Int) -> Promise<StoriesResponse> {
+		let (promise, seal) = Promise<StoriesResponse>.pending()
+		session.request(.getSeries(identifier, page)).done { (stories: StoriesResponse) in
+			seal.fulfill((stories))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
+	}
 }

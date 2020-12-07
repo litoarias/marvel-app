@@ -34,4 +34,10 @@ final class ClientMock: APIProtocol {
 		
 		return promise
 	}
+	
+	func getStories(_ page: Page, identifier: Int) -> Promise<StoriesResponse> {
+		let (promise, seal) = Promise<StoriesResponse>.pending()
+		
+		return promise
+	}
 }

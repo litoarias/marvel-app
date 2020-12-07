@@ -75,7 +75,7 @@ extension CharacterDetailViewController {
 	
 	private func setupComicsCollection() {
 		collectionComicsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
-		collectionComicsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.comicName)
+		collectionComicsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionComicsView.backgroundColor = .clear
 		collectionComicsView.showsHorizontalScrollIndicator = false
 		collectionComicsView.delegate = self
@@ -101,7 +101,7 @@ extension CharacterDetailViewController {
 	
 	private func setupSeriesCollection() {
 		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 140, height: 200)))
-		collectionSeriesView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.serieName)
+		collectionSeriesView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionSeriesView.backgroundColor = .clear
 		collectionSeriesView.showsHorizontalScrollIndicator = false
 		collectionSeriesView.delegate = self
@@ -126,8 +126,8 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupStoriesCollection() {
-		collectionStoriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 120)))
-		collectionStoriesView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionStoriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
+		collectionComicsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionStoriesView.backgroundColor = .clear
 		collectionStoriesView.showsHorizontalScrollIndicator = false
 		collectionStoriesView.delegate = self
@@ -139,7 +139,7 @@ extension CharacterDetailViewController {
 		collectionStoriesView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
 		collectionStoriesView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
 		collectionStoriesView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
-		collectionStoriesView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+		collectionStoriesView.heightAnchor.constraint(equalToConstant: 180).isActive = true
 	}
 	
 	private func commonLayout(size: CGSize) -> UICollectionViewFlowLayout {

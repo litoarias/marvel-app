@@ -4,7 +4,9 @@ final class CharacterDetailViewModel: CharacterDetailProtocol {
 	
 	var comics: Observable<ComicsResponse?> = Observable(nil)
 	var series: Observable<SeriesResponse?> = Observable(nil)
+	var stories: Observable<StoriesResponse?> = Observable(nil)
 	var errorMessage: Observable<String?> = Observable(nil)
+	
 	private let session: APIProtocol?
 	
 	init(_ session: APIProtocol) {
@@ -20,6 +22,7 @@ extension CharacterDetailViewModel {
 	func fetchData(identifier: Int) {
 		fetchComics(identifier: identifier)
 		fetchSeries(identifier: identifier)
+		fetchStories(identifier: identifier)
 	}
 }
 
@@ -34,7 +37,7 @@ extension CharacterDetailViewModel {
 		}.done {
 			self.comics.value = $0
 		}.catch {
-			debugPrint($0)
+			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}
 	}
 	
@@ -45,7 +48,22 @@ extension CharacterDetailViewModel {
 		}.done {
 			self.series.value = $0
 		}.catch {
-			debugPrint($0)
+			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}
+	}
+	
+	private func fetchStories(identifier: Int) {
+		guard let session = self.session else { return }
+		firstly {
+			session.getStories(Page(limit: 75, offset: 0), identifier: identifier)
+		}.done {
+			self.stories.value = $0
+		}.catch {
+			self.setError(($0 as? ApiError ?? ApiError.unknown))
+		}
+	}
+	
+	private func setError(_ error: ApiError) {
+		self.errorMessage.value = error.errorDescription
 	}
 }

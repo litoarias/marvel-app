@@ -19,6 +19,7 @@ final class CharacterDetailViewController: UIViewController {
 	private var viewModel: CharacterDetailViewModel?
 	var comics: ComicsResponse?
 	var series: SeriesResponse?
+	var stories: StoriesResponse?
 	
 	// MARK: - LIFE CYCLE
 	
@@ -84,6 +85,13 @@ extension CharacterDetailViewController {
 			self.series = series
 			DispatchQueue.main.async {
 				self.collectionSeriesView.reloadData()
+			}
+		})
+		viewModel?.stories.bind({ [weak self] series in
+			guard let self = self else { return }
+			self.stories = series
+			DispatchQueue.main.async {
+				self.collectionStoriesView.reloadData()
 			}
 		})
 		viewModel?.errorMessage.bind({ [weak self] message in
