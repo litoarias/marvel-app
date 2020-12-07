@@ -7,9 +7,10 @@ final class CharacterDetailViewController: UIViewController {
 	private var character: Character?
 	private var viewModel: CharacterDetailViewModel?
 	
-	let scrollView: UIScrollView = UIScrollView()
-	let container: UIView = UIView()
-	let labelTitle: UILabel = UILabel()
+	let scrollView = UIScrollView()
+	let container = UIView()
+	let labelTitle = UILabel()
+	let backgroundImage = UIImageView()
 	
 	// MARK: - LIFE CYCLE
 
@@ -26,8 +27,7 @@ final class CharacterDetailViewController: UIViewController {
 	override func loadView() {
 		super.loadView()
 		setupViews()
-		title = character?.name
-		debugPrint(self.character)
+		bindCharacter()
 	}
 	
 	static func setup(with character: Character) -> CharacterDetailViewController {
@@ -44,4 +44,14 @@ final class CharacterDetailViewController: UIViewController {
 // MARK: - PRIVATE METHODS
 
 extension CharacterDetailViewController {
+	
+	private func bindCharacter() {
+		title = character?.name
+		labelTitle.text = character?.descript
+		
+		if let iUrl = character?.thumbnail?.thumbnailUrl, let imageUrl = URL(string: iUrl) {
+			backgroundImage.kf.setImage(with: imageUrl, options: nil)
+		}
+		
+	}
 }
