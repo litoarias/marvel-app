@@ -55,13 +55,23 @@ extension CharacterListViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath) as UITableViewCell
-			cell.textLabel?.text = "\(indexPath.row): \(self.characterList[indexPath.row].name ?? "\(indexPath.row)")"
-			return cell
+			let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as? CharacterTableViewCell
+			let item = characterList[indexPath.row]
+			cell?.setup(with: item)
+			return cell ?? CharacterTableViewCell()
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.className, for: indexPath) as? LoadingTableViewCell
 			cell?.startAnimate()
 			return cell ?? LoadingTableViewCell()
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath)
+		cell.imageView?.kf.cancelDownloadTask()
+		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as? CharacterTableViewCell
+			cell?.icon.kf.cancelDownloadTask()
 		}
 	}
 }
@@ -100,12 +110,16 @@ extension CharacterListViewController {
 		
 		viewModel?.reload.bind({ [weak self] _ in
 			guard let self = self else { return }
-			self.tableView.reloadData()
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
 		})
 		
 		viewModel?.errorMessage.bind({ [weak self] message in
 			guard let self = self else { return }
-			self.popupAlert(title: "Error", message: message)
+			DispatchQueue.main.async {
+				!(message?.isEmpty ?? true) ? self.popupAlert(title: "Error", message: message) : nil
+			}
 		})
 	}
 }

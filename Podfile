@@ -11,19 +11,20 @@ target 'MarvelApp' do
 	pod 'PromiseKit/CorePromise'
 	pod 'Sourcery'
 	pod 'PagedLists', :git => 'https://github.com/litoarias/PagedLists'
+	pod 'Kingfisher'
 	
-	target 'MarvelAppTests' do
-		inherit! :search_paths
-		use_frameworks!
+end
 
-	end
-	
-	post_install do |pi|
-		pi.pods_project.targets.each do |t|
-			t.build_configurations.each do |config|
-				config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-			end
+
+target 'MarvelAppTests' do
+	inherit! :search_paths
+	use_frameworks!
+end
+
+post_install do |pi|
+	pi.pods_project.targets.each do |t|
+		t.build_configurations.each do |config|
+			config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
 		end
 	end
-	
 end

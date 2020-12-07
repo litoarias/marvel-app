@@ -16,6 +16,9 @@ final class CharacterListViewModel: CharacterListProtocol {
 		self.session = session
 	}
 	
+	
+	/// Fetch character of api
+	/// - Parameter completion: this closure is needed for handle data to tableview
 	func fetchCharacters(_ completion: @escaping ((Int, NSError?) -> Void)) {
 		guard let session = self.session else { return }
 		firstly {
@@ -30,6 +33,11 @@ final class CharacterListViewModel: CharacterListProtocol {
 			self.reload.value = ()
 		}
 	}
+}
+
+// MARK: - PRIVATE METHODS
+
+extension CharacterListViewModel {
 	
 	private func incrementPage(_ request: CharacterResponse, completion: @escaping (Int, NSError?) -> Void) -> Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)> {
 		let (promise, seal) = Promise<(CharacterResponse, completion: (Int, NSError?) -> Void)>.pending()

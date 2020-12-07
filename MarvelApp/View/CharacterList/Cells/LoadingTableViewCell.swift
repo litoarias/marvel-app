@@ -4,8 +4,7 @@ final class LoadingTableViewCell: UITableViewCell {
 	
 	// MARK: - PROPERTIES
 	
-	private var container = UIView()
-	private var activityIndicator = UIActivityIndicatorView(style: .gray)
+	private var activityIndicator: UIActivityIndicatorView!
 	static let className = String(describing: LoadingTableViewCell.self)
 	
 	// MARK: - LIFE CYCLE
@@ -28,16 +27,14 @@ final class LoadingTableViewCell: UITableViewCell {
 
 extension LoadingTableViewCell {
 	private func addViews() {
-		contentView.addSubview(container)
-		container.translatesAutoresizingMaskIntoConstraints = false
-		container.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-		container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-		container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-		container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-		
-		container.addSubview(activityIndicator)
+		if #available(iOS 13.0, *) {
+			activityIndicator = UIActivityIndicatorView(style: .large)
+		} else {
+			activityIndicator = UIActivityIndicatorView(style: .gray)
+		}
+		contentView.addSubview(activityIndicator)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
-		activityIndicator.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+		activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+		activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
 	}
 }
