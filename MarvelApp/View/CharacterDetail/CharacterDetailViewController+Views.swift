@@ -12,6 +12,12 @@ extension CharacterDetailViewController {
 		setupContainer()
 		setupBackgroundImage()
 		setupLabelTitle()
+		setupTitleComicsCollection()
+		setupComicsCollection()
+		setupTitleSeriesCollection()
+		setupSeriesCollection()
+		setupTitleStoriesCollection()
+		setupStoriesCollection()
 	}
 	
 	private func setupScrollView() {
@@ -37,7 +43,8 @@ extension CharacterDetailViewController {
 	
 	private func setupBackgroundImage() {
 		container.addSubview(backgroundImage)
-		backgroundImage.contentMode = .scaleToFill
+		backgroundImage.contentMode = .scaleAspectFill
+		backgroundImage.clipsToBounds = true
 		backgroundImage.translatesAutoresizingMaskIntoConstraints = false
 		backgroundImage.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
 		backgroundImage.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
@@ -46,16 +53,102 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupLabelTitle() {
-		container.addSubview(labelTitle)
-		labelTitle.text = "The standard Lorem Ipsum passage, used since the 1500s"
-		labelTitle.numberOfLines = 0
-		labelTitle.font = UIFont.preferredFont(forTextStyle: .title2)
-		labelTitle.adjustsFontForContentSizeCategory = true
-		labelTitle.translatesAutoresizingMaskIntoConstraints = false
-		labelTitle.topAnchor.constraint(equalTo: backgroundImage.bottomAnchor, constant: 12).isActive = true
-		labelTitle.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
-		labelTitle.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
-		labelTitle.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
+		container.addSubview(labelDescription)
+		labelDescription.numberOfLines = 0
+		labelDescription.font = UIFont.preferredFont(forTextStyle: .title2)
+		labelDescription.adjustsFontForContentSizeCategory = true
+		labelDescription.translatesAutoresizingMaskIntoConstraints = false
+		labelDescription.topAnchor.constraint(equalTo: backgroundImage.bottomAnchor, constant: 18).isActive = true
+		labelDescription.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
+		labelDescription.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
 	}
 	
+	private func setupTitleComicsCollection() {
+		container.addSubview(labelTitleComics)
+		labelTitleComics.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
+		labelTitleComics.text = "Comics"
+		labelTitleComics.translatesAutoresizingMaskIntoConstraints = false
+		labelTitleComics.topAnchor.constraint(equalTo: labelDescription.bottomAnchor, constant: 22).isActive = true
+		labelTitleComics.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
+		labelTitleComics.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
+	}
+	
+	private func setupComicsCollection() {
+		collectionComicsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout())
+		collectionComicsView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionComicsView.backgroundColor = .clear
+		collectionComicsView.showsHorizontalScrollIndicator = false
+		collectionComicsView.delegate = self
+		collectionComicsView.dataSource = self
+		
+		container.addSubview(collectionComicsView)
+		collectionComicsView.translatesAutoresizingMaskIntoConstraints = false
+		collectionComicsView.topAnchor.constraint(equalTo: labelTitleComics.bottomAnchor, constant: 16).isActive = true
+		collectionComicsView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+		collectionComicsView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+		collectionComicsView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+	}
+	
+	private func setupTitleSeriesCollection() {
+		container.addSubview(labelTitleSeries)
+		labelTitleSeries.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
+		labelTitleSeries.text = "Series"
+		labelTitleSeries.translatesAutoresizingMaskIntoConstraints = false
+		labelTitleSeries.topAnchor.constraint(equalTo: collectionComicsView.bottomAnchor, constant: 22).isActive = true
+		labelTitleSeries.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
+		labelTitleSeries.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
+	}
+	
+	private func setupSeriesCollection() {
+		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout())
+		collectionSeriesView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionSeriesView.backgroundColor = .clear
+		collectionSeriesView.showsHorizontalScrollIndicator = false
+		collectionSeriesView.delegate = self
+		collectionSeriesView.dataSource = self
+		
+		container.addSubview(collectionSeriesView)
+		collectionSeriesView.translatesAutoresizingMaskIntoConstraints = false
+		collectionSeriesView.topAnchor.constraint(equalTo: labelTitleSeries.bottomAnchor, constant: 16).isActive = true
+		collectionSeriesView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+		collectionSeriesView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+		collectionSeriesView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+	}
+	
+	private func setupTitleStoriesCollection() {
+		container.addSubview(labelTitleStories)
+		labelTitleStories.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
+		labelTitleStories.text = "Stories"
+		labelTitleStories.translatesAutoresizingMaskIntoConstraints = false
+		labelTitleStories.topAnchor.constraint(equalTo: collectionSeriesView.bottomAnchor, constant: 22).isActive = true
+		labelTitleStories.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
+		labelTitleStories.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
+	}
+	
+	private func setupStoriesCollection() {
+		collectionStoriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout())
+		collectionStoriesView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+		collectionStoriesView.backgroundColor = .clear
+		collectionStoriesView.showsHorizontalScrollIndicator = false
+		collectionStoriesView.delegate = self
+		collectionStoriesView.dataSource = self
+		
+		container.addSubview(collectionStoriesView)
+		collectionStoriesView.translatesAutoresizingMaskIntoConstraints = false
+		collectionStoriesView.topAnchor.constraint(equalTo: labelTitleStories.bottomAnchor, constant: 16).isActive = true
+		collectionStoriesView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+		collectionStoriesView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+		collectionStoriesView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
+		collectionStoriesView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+	}
+	
+	private func commonLayout() -> UICollectionViewFlowLayout {
+		let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .horizontal
+		layout.minimumLineSpacing = 20
+		layout.minimumInteritemSpacing = 20
+		layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+		layout.itemSize = CGSize(width: 90, height: 90)
+		return layout
+	}
 }

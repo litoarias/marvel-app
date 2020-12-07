@@ -9,9 +9,15 @@ final class CharacterDetailViewController: UIViewController {
 	
 	let scrollView = UIScrollView()
 	let container = UIView()
-	let labelTitle = UILabel()
+	let labelDescription = UILabel()
 	let backgroundImage = UIImageView()
-	
+	let labelTitleComics = UILabel()
+	var collectionComicsView: UICollectionView!
+	let labelTitleSeries = UILabel()
+	var collectionSeriesView: UICollectionView!
+	let labelTitleStories = UILabel()
+	var collectionStoriesView: UICollectionView!
+
 	// MARK: - LIFE CYCLE
 
 	init(viewModel: CharacterDetailViewModel, character: Character) {
@@ -47,11 +53,9 @@ extension CharacterDetailViewController {
 	
 	private func bindCharacter() {
 		title = character?.name
-		labelTitle.text = character?.descript
-		
+		labelDescription.text = character?.descript
 		if let iUrl = character?.thumbnail?.thumbnailUrl, let imageUrl = URL(string: iUrl) {
 			backgroundImage.kf.setImage(with: imageUrl, options: nil)
 		}
-		
 	}
 }
