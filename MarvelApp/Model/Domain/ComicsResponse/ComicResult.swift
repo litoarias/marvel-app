@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct Result: Codable {
+struct ComicResult: Codable {
 	let characters: ComicCharacter?
 	let collectedIssues: [String]?
 	let collections: [String]?
