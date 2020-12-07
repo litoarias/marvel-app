@@ -8,34 +8,22 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
 			return comics?.data?.results?.count ?? 0
 		} else if collectionView == collectionSeriesView {
 			return series?.data?.results?.count ?? 0
+		} else {
+			return stories?.data?.results?.count ?? 0
 		}
-		return 10
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-				
+		var item: String = ""
 		if collectionView == collectionComicsView {
-			
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
-			let item = comics?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
-			cell?.setup(thumbnail: item)
-			return cell ?? ImageCollectionViewCell()
-	
+			item = comics?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 		} else if collectionView == collectionSeriesView {
-		
-			let item = series?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
-			cell?.setup(thumbnail: item)
-			return cell ?? ImageCollectionViewCell()
-		
+			item = series?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 		} else {
-			
-			let item = stories?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
-			cell?.setup(thumbnail: item)
-			return cell ?? ImageCollectionViewCell()
-			
+			item = stories?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 		}
-		
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
+		cell?.setup(thumbnail: item)
+		return cell ?? ImageCollectionViewCell()
 	}
 }
