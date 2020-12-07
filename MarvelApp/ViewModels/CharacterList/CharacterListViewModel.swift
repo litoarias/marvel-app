@@ -15,7 +15,11 @@ final class CharacterListViewModel: CharacterListProtocol {
 	init(_ session: APIProtocol) {
 		self.session = session
 	}
-	
+}
+
+// MARK: - PUBLIC METHODS
+
+extension CharacterListViewModel {
 	
 	/// Fetch character of api
 	/// - Parameter completion: this closure is needed for handle data to tableview

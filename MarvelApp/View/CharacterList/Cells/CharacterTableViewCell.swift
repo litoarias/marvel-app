@@ -23,6 +23,11 @@ class CharacterTableViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+}
+
+// MARK: - PULBIC METHODS
+
+extension CharacterTableViewCell {
 	func setup(with character: Character) {
 		title.text = character.name
 		let desc = character.desc?.isEmpty ?? "".isEmpty ? "Not description provided" : character.desc
