@@ -9,15 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		
-		var viewModel: CharacterListViewModel!
-		#if MOCK || XCTEST
-		viewModel = CharacterListViewModel(ClientMock())
-		#else
-		viewModel = CharacterListViewModel(Client())
-		#endif
-		
-		let controller = CharacterListViewController(viewModel: viewModel)
-		let navigation = UINavigationController(rootViewController: controller)
+		let navigation = UINavigationController(rootViewController: CharacterListViewController.setup())
 		
 		window?.rootViewController = navigation
 		window?.backgroundColor = .white

@@ -25,6 +25,15 @@ final class CharacterListViewController: UIViewController {
 		setupViews()
 	}
 	
+	static func setup() -> CharacterListViewController {
+		var viewModel: CharacterListViewModel!
+		#if MOCK || XCTEST
+		viewModel = CharacterListViewModel(ClientMock())
+		#else
+		viewModel = CharacterListViewModel(Client())
+		#endif
+		return CharacterListViewController(viewModel: viewModel)
+	}
 }
 
 // MARK: - PRIVATE METHODS

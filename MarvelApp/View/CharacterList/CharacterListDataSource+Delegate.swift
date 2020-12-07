@@ -18,14 +18,6 @@ extension CharacterListViewController: UITableViewDataSource {
 		}
 	}
 	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.section == 0 {
-			return UITableView.automaticDimension
-		} else {
-			return 90
-		}
-	}
-	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as? CharacterTableViewCell
@@ -60,7 +52,7 @@ extension CharacterListViewController: PagedTableViewDelegate {
 	func tableView(_ tableView: PagedTableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 0 {
 			let item = characterList[indexPath.row]
-			debugPrint(item)
+			navigationController?.pushViewController(CharacterDetailViewController.setup(with: item), animated: true) 
 		}
 	}
 }
