@@ -3,12 +3,24 @@ import UIKit
 extension CharacterListViewController {
 	
 	func setupViews() {
+		if #available(iOS 13.0, *) {
+			view.backgroundColor = .systemBackground
+		} else {
+			view.backgroundColor = .white
+		}
+		setupNavigationBar()
 		setupTable()
+	}
+	
+	private func setupNavigationBar() {
+		title = "Marvel Heroes"
+		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationController?.navigationItem.largeTitleDisplayMode = .always
 	}
 	
 	private func setupTable() {
 		view.addSubview(tableView)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+		tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.className)
 		tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.className)
 		tableView.dataSource = self
 		tableView.updateDelegate = self
