@@ -64,7 +64,7 @@ extension CharacterTableViewCell {
 		container.addSubview(title)
 		title.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
 		title.translatesAutoresizingMaskIntoConstraints = false
-		title.centerYAnchor.constraint(equalTo: icon.centerYAnchor, constant: -15).isActive = true
+		title.centerYAnchor.constraint(equalTo: icon.centerYAnchor, constant: -18).isActive = true
 		title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8).isActive = true
 		title.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -8).isActive = true
 		
