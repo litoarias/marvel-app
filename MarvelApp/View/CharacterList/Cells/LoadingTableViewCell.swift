@@ -18,6 +18,12 @@ final class LoadingTableViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+}
+
+// MARK: - PUBLIC METHODS
+
+extension LoadingTableViewCell {
+	
 	func startAnimate() {
 		activityIndicator.startAnimating()
 	}

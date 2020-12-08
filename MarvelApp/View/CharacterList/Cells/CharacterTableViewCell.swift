@@ -30,8 +30,7 @@ class CharacterTableViewCell: UITableViewCell {
 extension CharacterTableViewCell {
 	func setup(with character: Character) {
 		title.text = character.name
-		let desc = character.desc?.isEmpty ?? "".isEmpty ? "Not description provided" : character.desc
-		subtitle.text = desc
+		subtitle.text = character.descript
 		if let iUrl = character.thumbnail?.thumbnailUrl,  let imageUrl = URL(string: iUrl) {
 			icon.kf.setImage(with: imageUrl, options: nil)
 			icon.layer.masksToBounds = true
@@ -64,13 +63,13 @@ extension CharacterTableViewCell {
 		container.addSubview(title)
 		title.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
 		title.translatesAutoresizingMaskIntoConstraints = false
-		title.centerYAnchor.constraint(equalTo: icon.centerYAnchor, constant: -15).isActive = true
+		title.centerYAnchor.constraint(equalTo: icon.centerYAnchor, constant: -18).isActive = true
 		title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8).isActive = true
 		title.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -8).isActive = true
 		
 		container.addSubview(subtitle)
 		subtitle.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
-		subtitle.numberOfLines = 3
+		subtitle.numberOfLines = 2
 		subtitle.textColor = .systemGray
 		subtitle.translatesAutoresizingMaskIntoConstraints = false
 		subtitle.topAnchor.constraint(greaterThanOrEqualTo: title.bottomAnchor).isActive = true

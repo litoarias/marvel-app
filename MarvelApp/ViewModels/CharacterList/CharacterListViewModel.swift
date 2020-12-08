@@ -4,13 +4,16 @@ let defaultLimit = 50
 
 final class CharacterListViewModel: CharacterListProtocol {
 	
+	// MARK: - PROPERTIES
+	
 	private let session: APIProtocol?
 	var currentPage: Page = Page(limit: defaultLimit, offset: 0)
-	
 	var hasMore: Observable<Bool?> = Observable(true)
 	var characters: Observable<[Character]?> = Observable([])
 	var reload: Observable<Void?> = Observable(())
 	var errorMessage: Observable<String?> = Observable(nil)
+	
+	// MARK: - LIFE CYCLE
 	
 	init(_ session: APIProtocol) {
 		self.session = session

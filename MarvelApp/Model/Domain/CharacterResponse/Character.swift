@@ -12,6 +12,7 @@ struct Character: Codable {
 	let stories: Comic?
 	let thumbnail: Thumbnail?
 	let urls: [ChracterUrl]?
+	var descript: String?
 	
 	private enum CodingKeys: String, CodingKey {
 		case comics, events, modified, name, resourceURI, series, stories, thumbnail, urls
@@ -23,6 +24,7 @@ struct Character: Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		self.comics = try container.decode(Comic.self, forKey: .comics)
 		self.desc = try container.decode(String.self, forKey: .desc)
+		self.descript = self.desc?.isEmpty ?? "".isEmpty ? "Not description provided": self.desc
 		self.events = try container.decode(Comic.self, forKey: .events)
 		self.identifier = try container.decode(Int.self, forKey: .identifier)
 		self.modified = try container.decode(String.self, forKey: .modified)

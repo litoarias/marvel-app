@@ -14,4 +14,34 @@ final class Client: APIProtocol {
 		}
 		return promise
 	}
+	
+	func getComics(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getComics(identifier, page)).done { (comics: ItemResponse) in
+			seal.fulfill((comics))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
+	}
+	
+	func getSeries(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getSeries(identifier, page)).done { (series: ItemResponse) in
+			seal.fulfill((series))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
+	}
+	
+	func getEvents(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getEvents(identifier, page)).done { (events: ItemResponse) in
+			seal.fulfill((events))
+		}.catch { error in
+			seal.reject(error)
+		}
+		return promise
+	}
 }
