@@ -75,7 +75,9 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupComicsCollection() {
-		collectionComicsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
+		let height = 250
+		let widht = 170
+		collectionComicsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: widht, height: height)))
 		collectionComicsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionComicsView.backgroundColor = .clear
 		collectionComicsView.showsHorizontalScrollIndicator = false
@@ -87,7 +89,7 @@ extension CharacterDetailViewController {
 		collectionComicsView.topAnchor.constraint(equalTo: labelTitleComics.bottomAnchor, constant: 16).isActive = true
 		collectionComicsView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
 		collectionComicsView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-		collectionComicsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+		collectionComicsView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
 	}
 	
 	private func setupTitleSeriesCollection() {
@@ -101,7 +103,9 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupSeriesCollection() {
-		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 180, height: 200)))
+		let height = 250
+		let widht = 240
+		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: widht, height: height)))
 		collectionSeriesView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionSeriesView.backgroundColor = .clear
 		collectionSeriesView.showsHorizontalScrollIndicator = false
@@ -113,7 +117,7 @@ extension CharacterDetailViewController {
 		collectionSeriesView.topAnchor.constraint(equalTo: labelTitleSeries.bottomAnchor, constant: 16).isActive = true
 		collectionSeriesView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
 		collectionSeriesView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-		collectionSeriesView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+		collectionSeriesView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
 	}
 	
 	private func setupTitleEventsCollection() {
@@ -127,7 +131,9 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupEventsCollection() {
-		collectionEventsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 160, height: 180)))
+		let height = 180
+		let widht = 220
+		collectionEventsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: widht, height: height)))
 		collectionEventsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionEventsView.backgroundColor = .clear
 		collectionEventsView.showsHorizontalScrollIndicator = false
@@ -139,7 +145,7 @@ extension CharacterDetailViewController {
 		collectionEventsView.topAnchor.constraint(equalTo: labelTitleEvents.bottomAnchor, constant: 16).isActive = true
 		collectionEventsView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
 		collectionEventsView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-		collectionEventsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+		collectionEventsView.heightAnchor.constraint(equalToConstant: CGFloat(height)).isActive = true
 	}
 	
 	private func setupAttributionLabel() {
