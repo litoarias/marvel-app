@@ -101,7 +101,7 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupSeriesCollection() {
-		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 140, height: 200)))
+		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 180, height: 200)))
 		collectionSeriesView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionSeriesView.backgroundColor = .clear
 		collectionSeriesView.showsHorizontalScrollIndicator = false
@@ -127,7 +127,7 @@ extension CharacterDetailViewController {
 	}
 	
 	private func setupEventsCollection() {
-		collectionEventsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
+		collectionEventsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 160, height: 180)))
 		collectionEventsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionEventsView.backgroundColor = .clear
 		collectionEventsView.showsHorizontalScrollIndicator = false
