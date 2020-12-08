@@ -2,9 +2,12 @@ import PagedLists
 
 final class CharacterListViewController: UIViewController {
 	
-	// MARK: - PROPERTIES
+	// MARK: - OUTLETS
 	
 	var tableView = PagedTableView(frame: .zero)
+
+	// MARK: - PROPERTIES
+	
 	var characterList = [Character]()
 	var viewModel: CharacterListViewModel?
 	

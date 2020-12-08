@@ -1,7 +1,5 @@
 import PagedLists
 
-// MARK: - UITABLEVIEWDATASOURCE
-
 extension CharacterListViewController: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,8 +38,6 @@ extension CharacterListViewController: UITableViewDataSource {
 		}
 	}
 }
-
-// MARK: - PAGEDTABLEVIEWDELEGATE
 
 extension CharacterListViewController: PagedTableViewDelegate {
 	

@@ -2,7 +2,7 @@ import UIKit
 
 final class CharacterDetailViewController: UIViewController {
 	
-	// MARK: - PROPERTIES
+	// MARK: - OUTLETS
 	
 	let scrollView = UIScrollView()
 	let container = UIView()
@@ -14,6 +14,8 @@ final class CharacterDetailViewController: UIViewController {
 	var collectionSeriesView: UICollectionView!
 	let labelTitleEvents = UILabel()
 	var collectionEventsView: UICollectionView!
+	
+	// MARK: - PROPERTIES
 	
 	private var character: Character?
 	private var viewModel: CharacterDetailViewModel?
@@ -80,6 +82,7 @@ extension CharacterDetailViewController {
 				self.collectionComicsView.reloadData()
 			}
 		})
+		
 		viewModel?.series.bind({ [weak self] series in
 			guard let self = self else { return }
 			self.series = series
@@ -87,6 +90,7 @@ extension CharacterDetailViewController {
 				self.collectionSeriesView.reloadData()
 			}
 		})
+		
 		viewModel?.events.bind({ [weak self] events in
 			guard let self = self else { return }
 			self.events = events
@@ -94,6 +98,7 @@ extension CharacterDetailViewController {
 				self.collectionEventsView.reloadData()
 			}
 		})
+		
 		viewModel?.errorMessage.bind({ [weak self] message in
 			guard let self = self else { return }
 			DispatchQueue.main.async {

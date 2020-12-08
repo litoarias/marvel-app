@@ -16,9 +16,9 @@
 		4121F618257A9AC7002DAED9 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121F617257A9AC7002DAED9 /* APIRouter.swift */; };
 		412BC236257E2F8E00276828 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC235257E2F8E00276828 /* CharacterDetailViewController.swift */; };
 		412BC23D257E3D7000276828 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC23C257E3D7000276828 /* CharacterDetailViewModel.swift */; };
-		412BC243257E3E0000276828 /* CharacterListDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC242257E3E0000276828 /* CharacterListDataSource+Delegate.swift */; };
+		412BC243257E3E0000276828 /* CharacterListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC242257E3E0000276828 /* CharacterListViewController+TableView.swift */; };
 		412BC251257E40F100276828 /* CharacterDetailViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC250257E40F100276828 /* CharacterDetailViewController+Views.swift */; };
-		412BC267257E51AF00276828 /* CharacterDetailViewController+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC266257E51AF00276828 /* CharacterDetailViewController+Collection.swift */; };
+		412BC267257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC266257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift */; };
 		412BC2B0257EBBBE00276828 /* CharacterDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2AF257EBBBE00276828 /* CharacterDetailContract.swift */; };
 		412BC2B5257EBFE300276828 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2B4257EBFE300276828 /* ImageCollectionViewCell.swift */; };
 		412BC2E1257EE53A00276828 /* ItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2E0257EE53A00276828 /* ItemResponse.swift */; };
@@ -85,9 +85,9 @@
 		4121F617257A9AC7002DAED9 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		412BC235257E2F8E00276828 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		412BC23C257E3D7000276828 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
-		412BC242257E3E0000276828 /* CharacterListDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListDataSource+Delegate.swift"; sourceTree = "<group>"; };
+		412BC242257E3E0000276828 /* CharacterListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListViewController+TableView.swift"; sourceTree = "<group>"; };
 		412BC250257E40F100276828 /* CharacterDetailViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+Views.swift"; sourceTree = "<group>"; };
-		412BC266257E51AF00276828 /* CharacterDetailViewController+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+Collection.swift"; sourceTree = "<group>"; };
+		412BC266257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		412BC2AF257EBBBE00276828 /* CharacterDetailContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailContract.swift; sourceTree = "<group>"; };
 		412BC2B4257EBFE300276828 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		412BC2E0257EE53A00276828 /* ItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponse.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 			children = (
 				412BC235257E2F8E00276828 /* CharacterDetailViewController.swift */,
 				412BC250257E40F100276828 /* CharacterDetailViewController+Views.swift */,
-				412BC266257E51AF00276828 /* CharacterDetailViewController+Collection.swift */,
+				412BC266257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift */,
 				412BC2B3257EBFD000276828 /* Cells */,
 			);
 			path = CharacterDetail;
@@ -261,7 +261,7 @@
 			children = (
 				410D1F042579A84C00D1F287 /* CharacterListViewController.swift */,
 				415638D0257BCF7D0029C509 /* CharacterListViewController+Views.swift */,
-				412BC242257E3E0000276828 /* CharacterListDataSource+Delegate.swift */,
+				412BC242257E3E0000276828 /* CharacterListViewController+TableView.swift */,
 				414382DE257BCB0400EF93E1 /* Cells */,
 			);
 			path = CharacterList;
@@ -689,7 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				415638EB257BDEAC0029C509 /* Observable.swift in Sources */,
-				412BC243257E3E0000276828 /* CharacterListDataSource+Delegate.swift in Sources */,
+				412BC243257E3E0000276828 /* CharacterListViewController+TableView.swift in Sources */,
 				4121F613257A9AA9002DAED9 /* NetworkConstants.swift in Sources */,
 				416B2D9E257D8BB400C2FED4 /* CharacterTableViewCell.swift in Sources */,
 				415638CC257BCED10029C509 /* CharacterListContract.swift in Sources */,
@@ -722,7 +722,7 @@
 				41A3F318257A794B00C75DD6 /* ChracterUrl.swift in Sources */,
 				415638D1257BCF7D0029C509 /* CharacterListViewController+Views.swift in Sources */,
 				412BC2B0257EBBBE00276828 /* CharacterDetailContract.swift in Sources */,
-				412BC267257E51AF00276828 /* CharacterDetailViewController+Collection.swift in Sources */,
+				412BC267257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

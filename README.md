@@ -5,7 +5,11 @@
 The application is made using the [Marvel API](https://developer.marvel.com), in order to explain how to use MVVM, the main concepts are:
 
 * `MVVM` “Model-View-ViewModel” architecture
-* `Environment` Multiple environments setup
+* `Environment` Multiple environments setup:
+	* Develop
+	* Release
+	* Mock
+	* Unit Test
 * `Dark mode` Supported
 * `Unit Testing` ViewModel test cases
 * `Third party libraries` with **Cocoapods**:
