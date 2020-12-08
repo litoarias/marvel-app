@@ -16,8 +16,8 @@ extension CharacterDetailViewController {
 		setupComicsCollection()
 		setupTitleSeriesCollection()
 		setupSeriesCollection()
-		setupTitleStoriesCollection()
-		setupStoriesCollection()
+		setupTitleEventsCollection()
+		setupEventsCollection()
 	}
 	
 	private func setupScrollView() {
@@ -115,31 +115,31 @@ extension CharacterDetailViewController {
 		collectionSeriesView.heightAnchor.constraint(equalToConstant: 200).isActive = true
 	}
 	
-	private func setupTitleStoriesCollection() {
-		container.addSubview(labelTitleStories)
-		labelTitleStories.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
-		labelTitleStories.text = "Stories"
-		labelTitleStories.translatesAutoresizingMaskIntoConstraints = false
-		labelTitleStories.topAnchor.constraint(equalTo: collectionSeriesView.bottomAnchor, constant: 22).isActive = true
-		labelTitleStories.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
-		labelTitleStories.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
+	private func setupTitleEventsCollection() {
+		container.addSubview(labelTitleEvents)
+		(labelTitleEvents).font = UIFont.systemFont(ofSize: 28, weight: .heavy)
+		(labelTitleEvents).text = "Events"
+		(labelTitleEvents).translatesAutoresizingMaskIntoConstraints = false
+		(labelTitleEvents).topAnchor.constraint(equalTo: collectionSeriesView.bottomAnchor, constant: 22).isActive = true
+		(labelTitleEvents).leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16).isActive = true
+		(labelTitleEvents).trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16).isActive = true
 	}
 	
-	private func setupStoriesCollection() {
-		collectionStoriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
-		collectionComicsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
-		collectionStoriesView.backgroundColor = .clear
-		collectionStoriesView.showsHorizontalScrollIndicator = false
-		collectionStoriesView.delegate = self
-		collectionStoriesView.dataSource = self
+	private func setupEventsCollection() {
+		collectionEventsView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: 120, height: 180)))
+		collectionEventsView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
+		collectionEventsView.backgroundColor = .clear
+		collectionEventsView.showsHorizontalScrollIndicator = false
+		collectionEventsView.delegate = self
+		collectionEventsView.dataSource = self
 		
-		container.addSubview(collectionStoriesView)
-		collectionStoriesView.translatesAutoresizingMaskIntoConstraints = false
-		collectionStoriesView.topAnchor.constraint(equalTo: labelTitleStories.bottomAnchor, constant: 16).isActive = true
-		collectionStoriesView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
-		collectionStoriesView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-		collectionStoriesView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
-		collectionStoriesView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+		container.addSubview(collectionEventsView)
+		collectionEventsView.translatesAutoresizingMaskIntoConstraints = false
+		collectionEventsView.topAnchor.constraint(equalTo: labelTitleEvents.bottomAnchor, constant: 16).isActive = true
+		collectionEventsView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+		collectionEventsView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+		collectionEventsView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
+		collectionEventsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
 	}
 	
 	private func commonLayout(size: CGSize) -> UICollectionViewFlowLayout {

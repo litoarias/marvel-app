@@ -15,9 +15,9 @@ final class Client: APIProtocol {
 		return promise
 	}
 	
-	func getComics(_ page: Page, identifier: Int) -> Promise<ComicsResponse> {
-		let (promise, seal) = Promise<ComicsResponse>.pending()
-		session.request(.getComics(identifier, page)).done { (comics: ComicsResponse) in
+	func getComics(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getComics(identifier, page)).done { (comics: ItemResponse) in
 			seal.fulfill((comics))
 		}.catch { error in
 			seal.reject(error)
@@ -25,9 +25,9 @@ final class Client: APIProtocol {
 		return promise
 	}
 	
-	func getSeries(_ page: Page, identifier: Int) -> Promise<SeriesResponse> {
-		let (promise, seal) = Promise<SeriesResponse>.pending()
-		session.request(.getSeries(identifier, page)).done { (series: SeriesResponse) in
+	func getSeries(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getSeries(identifier, page)).done { (series: ItemResponse) in
 			seal.fulfill((series))
 		}.catch { error in
 			seal.reject(error)
@@ -35,10 +35,10 @@ final class Client: APIProtocol {
 		return promise
 	}
 	
-	func getStories(_ page: Page, identifier: Int) -> Promise<StoriesResponse> {
-		let (promise, seal) = Promise<StoriesResponse>.pending()
-		session.request(.getSeries(identifier, page)).done { (stories: StoriesResponse) in
-			seal.fulfill((stories))
+	func getEvents(_ page: Page, identifier: Int) -> Promise<ItemResponse> {
+		let (promise, seal) = Promise<ItemResponse>.pending()
+		session.request(.getEvents(identifier, page)).done { (events: ItemResponse) in
+			seal.fulfill((events))
 		}.catch { error in
 			seal.reject(error)
 		}

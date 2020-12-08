@@ -4,9 +4,9 @@ final class CharacterDetailViewModel: CharacterDetailProtocol {
 	
 	// MARK: - PROPERTIES
 	
-	var comics: Observable<ComicsResponse?> = Observable(nil)
-	var series: Observable<SeriesResponse?> = Observable(nil)
-	var stories: Observable<StoriesResponse?> = Observable(nil)
+	var comics: Observable<ItemResponse?> = Observable(nil)
+	var series: Observable<ItemResponse?> = Observable(nil)
+	var events: Observable<ItemResponse?> = Observable(nil)
 	var errorMessage: Observable<String?> = Observable(nil)
 	private let session: APIProtocol?
 	
@@ -22,12 +22,12 @@ final class CharacterDetailViewModel: CharacterDetailProtocol {
 
 extension CharacterDetailViewModel {
 	
-	/// Simultaneous call to fetch `Comics`, `Series` and `Stories`
+	/// Simultaneous call to fetch `Comics`, `Series` and `Events`
 	/// - Parameter identifier: Character identifier, needed to make request
 	func fetchData(identifier: Int) {
 		fetchComics(identifier: identifier)
 		fetchSeries(identifier: identifier)
-		fetchStories(identifier: identifier)
+		fetchEvents(identifier: identifier)
 	}
 }
 
@@ -57,12 +57,12 @@ extension CharacterDetailViewModel {
 		}
 	}
 	
-	private func fetchStories(identifier: Int) {
+	private func fetchEvents(identifier: Int) {
 		guard let session = self.session else { return }
 		firstly {
-			session.getStories(Page(limit: 75, offset: 0), identifier: identifier)
+			session.getEvents(Page(limit: 75, offset: 0), identifier: identifier)
 		}.done {
-			self.stories.value = $0
+			self.events.value = $0
 		}.catch {
 			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}

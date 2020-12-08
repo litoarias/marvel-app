@@ -9,7 +9,7 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
 		} else if collectionView == collectionSeriesView {
 			return series?.data?.results?.count ?? 0
 		} else {
-			return stories?.data?.results?.count ?? 0
+			return events?.data?.results?.count ?? 0
 		}
 	}
 	
@@ -20,7 +20,7 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
 		} else if collectionView == collectionSeriesView {
 			item = series?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 		} else {
-			item = stories?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
+			item = events?.data?.results?[indexPath.row].thumbnail?.thumbnailUrl ?? ""
 		}
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as? ImageCollectionViewCell
 		cell?.setup(thumbnail: item)

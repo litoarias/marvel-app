@@ -5,7 +5,7 @@ enum APIRouter: URLRequestConvertible {
 	case getCharacters(Page)
 	case getComics(Int, Page)
 	case getSeries(Int, Page)
-	case getStories(Int, Page)
+	case getEvents(Int, Page)
 	
 	private var method: HTTPMethod {
 		switch self {
@@ -15,7 +15,7 @@ enum APIRouter: URLRequestConvertible {
 			return .get
 		case .getSeries:
 			return .get
-		case .getStories:
+		case .getEvents:
 			return .get
 		}
 	}
@@ -25,11 +25,11 @@ enum APIRouter: URLRequestConvertible {
 		case .getCharacters:
 			return NetworkConstants.Path.characters.rawValue
 		case .getComics(let id, _):
-			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.comics.rawValue
+			return NetworkConstants.Path.characters.rawValue + "/\(id)/" + NetworkConstants.Path.comics.rawValue
 		case .getSeries(let id, _):
-			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.series.rawValue
-		case .getStories(let id, _):
-			return NetworkConstants.Path.characters.rawValue + "\(id)" + NetworkConstants.Path.stories.rawValue
+			return NetworkConstants.Path.characters.rawValue + "/\(id)/" + NetworkConstants.Path.series.rawValue
+		case .getEvents(let id, _):
+			return NetworkConstants.Path.characters.rawValue + "/\(id)/" + NetworkConstants.Path.events.rawValue
 		}
 	}
 	
@@ -43,7 +43,7 @@ enum APIRouter: URLRequestConvertible {
 				NetworkConstants.ParameterKey.timestamp.rawValue: credentials.timestamp,
 				NetworkConstants.ParameterKey.hash.rawValue: credentials.hash
 			]
-		case .getComics(_, let page), .getSeries(_, let page), .getStories(_, let page):
+		case .getComics(_, let page), .getSeries(_, let page), .getEvents(_, let page):
 			return [
 				NetworkConstants.ParameterKey.limit.rawValue: page.limit,
 				NetworkConstants.ParameterKey.offset.rawValue: page.offset,

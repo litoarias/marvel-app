@@ -6,7 +6,7 @@ struct NetworkConstants {
 		case characters = "v1/public/characters"
 		case comics = "comics"
 		case series = "series"
-		case stories = "stories"
+		case events = "events"
 	}
 	
 	enum ParameterKey: String {

@@ -12,14 +12,14 @@ final class CharacterDetailViewController: UIViewController {
 	var collectionComicsView: UICollectionView!
 	let labelTitleSeries = UILabel()
 	var collectionSeriesView: UICollectionView!
-	let labelTitleStories = UILabel()
-	var collectionStoriesView: UICollectionView!
+	let labelTitleEvents = UILabel()
+	var collectionEventsView: UICollectionView!
 	
 	private var character: Character?
 	private var viewModel: CharacterDetailViewModel?
-	var comics: ComicsResponse?
-	var series: SeriesResponse?
-	var stories: StoriesResponse?
+	var comics: ItemResponse?
+	var series: ItemResponse?
+	var events: ItemResponse?
 	
 	// MARK: - LIFE CYCLE
 	
@@ -87,11 +87,11 @@ extension CharacterDetailViewController {
 				self.collectionSeriesView.reloadData()
 			}
 		})
-		viewModel?.stories.bind({ [weak self] series in
+		viewModel?.events.bind({ [weak self] events in
 			guard let self = self else { return }
-			self.stories = series
+			self.events = events
 			DispatchQueue.main.async {
-				self.collectionStoriesView.reloadData()
+				self.collectionEventsView.reloadData()
 			}
 		})
 		viewModel?.errorMessage.bind({ [weak self] message in
