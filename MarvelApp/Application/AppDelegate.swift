@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.backgroundColor = .white
 		window?.makeKeyAndVisible()
 		
+		testsDetailViewIfNeeded()
+		
 		return true
 	}
 }

@@ -9,6 +9,7 @@ final class CharacterDetailViewModel: CharacterDetailProtocol {
 	var events: Observable<ItemResponse?> = Observable(nil)
 	var errorMessage: Observable<String?> = Observable(nil)
 	private let session: APIProtocol?
+	var completion: (() -> Void)?
 	
 	// MARK: - LIFE CYCLE
 	
@@ -24,7 +25,8 @@ extension CharacterDetailViewModel {
 	
 	/// Simultaneous call to fetch `Comics`, `Series` and `Events`
 	/// - Parameter identifier: Character identifier, needed to make request
-	func fetchData(identifier: Int) {
+	func fetchData(identifier: Int, completion: (() -> Void)? = nil) {
+		self.completion = completion
 		fetchComics(identifier: identifier)
 		fetchSeries(identifier: identifier)
 		fetchEvents(identifier: identifier)
@@ -41,6 +43,7 @@ extension CharacterDetailViewModel {
 			session.getComics(Page(limit: 75, offset: 0), identifier: identifier)
 		}.done {
 			self.comics.value = $0
+			self.completion?()
 		}.catch {
 			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}
@@ -52,6 +55,7 @@ extension CharacterDetailViewModel {
 			session.getSeries(Page(limit: 75, offset: 0), identifier: identifier)
 		}.done {
 			self.series.value = $0
+			self.completion?()
 		}.catch {
 			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}
@@ -63,6 +67,7 @@ extension CharacterDetailViewModel {
 			session.getEvents(Page(limit: 75, offset: 0), identifier: identifier)
 		}.done {
 			self.events.value = $0
+			self.completion?()
 		}.catch {
 			self.setError(($0 as? ApiError ?? ApiError.unknown))
 		}
@@ -70,5 +75,6 @@ extension CharacterDetailViewModel {
 	
 	private func setError(_ error: ApiError) {
 		self.errorMessage.value = error.errorDescription
+		self.completion?()
 	}
 }
