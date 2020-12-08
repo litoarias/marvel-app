@@ -4,14 +4,17 @@
 
 The application is made using the [Marvel API](https://developer.marvel.com), in order to explain how to use MVVM, the main concepts are:
 
-* `MVVM` Model-View-ViewModel architecture
+* `MVVM` “Model-View-ViewModel” architecture
 * `Environment` Multiple environments setup
+* `Dark mode` Supported
 * `Unit Testing` ViewModel test cases
-* `Third party libraries`:
-	* `Alamofire` The Network layer
-	* `Sourcery` Secure credential handling
+* `Third party libraries` with **Cocoapods**:
+	* `Alamofire` Network layer, quick and easy
+	* `Sourcery` Secure credential handling between developers
 	* `PromiseKit` More readable syntax and simplify asynchronous programming
-	* `PagedLists` Class for manage an infinite scrolling
+	* `PagedLists` Manage an infinite scrolling
+	* `KingFisher` Loading & Caching images
+	* `SwiftLint` Swift style and conventions
 
 ## Run Requirements
 
