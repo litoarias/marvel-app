@@ -104,7 +104,7 @@ extension CharacterDetailViewController {
 	
 	private func setupSeriesCollection() {
 		let height = 250
-		let widht = 240
+		let widht = 250
 		collectionSeriesView = UICollectionView(frame: .zero, collectionViewLayout: commonLayout(size: CGSize(width: widht, height: height)))
 		collectionSeriesView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.className)
 		collectionSeriesView.backgroundColor = .clear
