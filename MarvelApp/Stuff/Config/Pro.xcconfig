@@ -1,0 +1,4 @@
+#include "Pods/Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"
+
+APP_NAME = Marvel
+APP_BUNDLE_ID = com.kairosds.hipolito.MarvelApp
