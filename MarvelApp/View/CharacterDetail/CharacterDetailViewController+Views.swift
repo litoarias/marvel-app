@@ -18,6 +18,7 @@ extension CharacterDetailViewController {
 		setupSeriesCollection()
 		setupTitleEventsCollection()
 		setupEventsCollection()
+		setupAttributionLabel()
 	}
 	
 	private func setupScrollView() {
@@ -138,8 +139,19 @@ extension CharacterDetailViewController {
 		collectionEventsView.topAnchor.constraint(equalTo: labelTitleEvents.bottomAnchor, constant: 16).isActive = true
 		collectionEventsView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
 		collectionEventsView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-		collectionEventsView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -12).isActive = true
 		collectionEventsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+	}
+	
+	private func setupAttributionLabel() {
+		container.addSubview(attributtionLabel)
+		attributtionLabel.font = UIFont.boldSystemFont(ofSize: 18)
+		attributtionLabel.text = "Data provided by Marvel. © 2014 Marvel"
+		attributtionLabel.textAlignment = .center
+		attributtionLabel.translatesAutoresizingMaskIntoConstraints = false
+		attributtionLabel.topAnchor.constraint(equalTo: collectionEventsView.bottomAnchor, constant: 72).isActive = true
+		attributtionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+		attributtionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+		attributtionLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18).isActive = true
 	}
 	
 	private func commonLayout(size: CGSize) -> UICollectionViewFlowLayout {

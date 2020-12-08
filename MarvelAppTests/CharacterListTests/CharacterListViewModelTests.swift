@@ -5,7 +5,6 @@ class CharacterListViewModelTests: XCTestCase {
 	
 	var viewModel: CharacterListViewModel!
 	var client: ClientMock!
-	var completion: (Int, NSError?) -> Void = { _,_ in }
 	
 	override func setUp() {
 		super.setUp()

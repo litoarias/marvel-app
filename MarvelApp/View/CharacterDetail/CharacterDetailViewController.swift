@@ -14,6 +14,7 @@ final class CharacterDetailViewController: UIViewController {
 	var collectionSeriesView: UICollectionView!
 	let labelTitleEvents = UILabel()
 	var collectionEventsView: UICollectionView!
+	let attributtionLabel = UILabel()
 	
 	// MARK: - PROPERTIES
 	

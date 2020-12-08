@@ -22,6 +22,8 @@
 		412BC2B0257EBBBE00276828 /* CharacterDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2AF257EBBBE00276828 /* CharacterDetailContract.swift */; };
 		412BC2B5257EBFE300276828 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2B4257EBFE300276828 /* ImageCollectionViewCell.swift */; };
 		412BC2E1257EE53A00276828 /* ItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BC2E0257EE53A00276828 /* ItemResponse.swift */; };
+		412E3BCE257F701D004D6AC3 /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E3BCD257F701D004D6AC3 /* CharacterDetailViewModelTests.swift */; };
+		412E3BE0257F83A5004D6AC3 /* HelperXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E3BDF257F83A5004D6AC3 /* HelperXCTest.swift */; };
 		415638A1257BCD9B0029C509 /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638A0257BCD9B0029C509 /* Environment.generated.swift */; };
 		415638CC257BCED10029C509 /* CharacterListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638CB257BCED00029C509 /* CharacterListContract.swift */; };
 		415638D1257BCF7D0029C509 /* CharacterListViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415638D0257BCF7D0029C509 /* CharacterListViewController+Views.swift */; };
@@ -91,6 +93,8 @@
 		412BC2AF257EBBBE00276828 /* CharacterDetailContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailContract.swift; sourceTree = "<group>"; };
 		412BC2B4257EBFE300276828 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		412BC2E0257EE53A00276828 /* ItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponse.swift; sourceTree = "<group>"; };
+		412E3BCD257F701D004D6AC3 /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
+		412E3BDF257F83A5004D6AC3 /* HelperXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperXCTest.swift; sourceTree = "<group>"; };
 		413EF608257C1C6A00BDCC36 /* Pro.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Pro.xcconfig; sourceTree = "<group>"; };
 		413EF609257C1C6A00BDCC36 /* Dev.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		413EF60A257C1C6A00BDCC36 /* Mock.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Mock.xcconfig; sourceTree = "<group>"; };
@@ -195,6 +199,9 @@
 		410D1F162579A85400D1F287 /* MarvelAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				41D0CA70257D21B800ECBDD5 /* DataExtensionTests.swift */,
+				41D0CA6C257D1E0000ECBDD5 /* ApiSessionTests.swift */,
+				412E3BCC257F6FF4004D6AC3 /* CharactersDetailTests */,
 				41E7AF4E257D083100F698EE /* CharacterListTests */,
 				410D1F192579A85400D1F287 /* Info.plist */,
 			);
@@ -235,6 +242,22 @@
 				412BC2E0257EE53A00276828 /* ItemResponse.swift */,
 			);
 			path = ItemResponse;
+			sourceTree = "<group>";
+		};
+		412E3BCC257F6FF4004D6AC3 /* CharactersDetailTests */ = {
+			isa = PBXGroup;
+			children = (
+				412E3BCD257F701D004D6AC3 /* CharacterDetailViewModelTests.swift */,
+			);
+			path = CharactersDetailTests;
+			sourceTree = "<group>";
+		};
+		412E3BDE257F838C004D6AC3 /* XCTest */ = {
+			isa = PBXGroup;
+			children = (
+				412E3BDF257F83A5004D6AC3 /* HelperXCTest.swift */,
+			);
+			path = XCTest;
 			sourceTree = "<group>";
 		};
 		413EF607257C1C6000BDCC36 /* Config */ = {
@@ -410,8 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				41E7AF4F257D084900F698EE /* CharacterListViewModelTests.swift */,
-				41D0CA6C257D1E0000ECBDD5 /* ApiSessionTests.swift */,
-				41D0CA70257D21B800ECBDD5 /* DataExtensionTests.swift */,
 			);
 			path = CharacterListTests;
 			sourceTree = "<group>";
@@ -428,6 +449,7 @@
 		41E88927257A8AC6001E0E3C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				412E3BDE257F838C004D6AC3 /* XCTest */,
 				41E88928257A8AD2001E0E3C /* Network */,
 			);
 			path = Helpers;
@@ -720,6 +742,7 @@
 				41E88950257A9396001E0E3C /* Data+ErrorCode.swift in Sources */,
 				412BC236257E2F8E00276828 /* CharacterDetailViewController.swift in Sources */,
 				41A3F318257A794B00C75DD6 /* ChracterUrl.swift in Sources */,
+				412E3BE0257F83A5004D6AC3 /* HelperXCTest.swift in Sources */,
 				415638D1257BCF7D0029C509 /* CharacterListViewController+Views.swift in Sources */,
 				412BC2B0257EBBBE00276828 /* CharacterDetailContract.swift in Sources */,
 				412BC267257E51AF00276828 /* CharacterDetailViewController+CollectionView.swift in Sources */,
@@ -731,6 +754,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E7AF50257D084900F698EE /* CharacterListViewModelTests.swift in Sources */,
+				412E3BCE257F701D004D6AC3 /* CharacterDetailViewModelTests.swift in Sources */,
 				41D0CA71257D21B800ECBDD5 /* DataExtensionTests.swift in Sources */,
 				41D0CA6D257D1E0000ECBDD5 /* ApiSessionTests.swift in Sources */,
 			);
@@ -884,6 +908,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4U72882THN;
+				EXCLUDED_SOURCE_FILE_NAMES = "";
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -905,6 +930,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4U72882THN;
+				EXCLUDED_SOURCE_FILE_NAMES = "$(SRCROOT)/MarvelApp/Stuff/Mocks/*.*";
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1033,6 +1059,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4U72882THN;
+				EXCLUDED_SOURCE_FILE_NAMES = "";
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
