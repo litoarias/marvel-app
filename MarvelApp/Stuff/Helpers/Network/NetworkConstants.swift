@@ -29,12 +29,21 @@ struct NetworkConstants {
 	}
 	
 	enum Mock {
-		case charactersRequest(Page)
+		case charactersResponse(Page)
+		case comicsResponse
+		case eventsResponse
+		case seriesResponse
 		
 		var path: String {
 			switch self {
-			case .charactersRequest(let page):
+			case .charactersResponse(let page):
 				return "characters-offset\(page.offset)-limit\(page.limit)"
+			case .comicsResponse:
+				return Path.comics.rawValue
+			case .eventsResponse:
+				return Path.events.rawValue
+			case .seriesResponse:
+				return Path.series.rawValue
 			}
 		}
 	}
