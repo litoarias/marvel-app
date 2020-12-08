@@ -80,6 +80,9 @@ extension CharacterDetailViewController {
 			guard let self = self else { return }
 			self.comics = comics
 			DispatchQueue.main.async {
+				if let comics = self.comics?.data?.results, comics.isEmpty {
+					self.collectionEventsView.setEmptyMessage("No comics avalilable")
+				}
 				self.collectionComicsView.reloadData()
 			}
 		})
@@ -88,6 +91,9 @@ extension CharacterDetailViewController {
 			guard let self = self else { return }
 			self.series = series
 			DispatchQueue.main.async {
+				if let series = self.series?.data?.results, series.isEmpty {
+					self.collectionEventsView.setEmptyMessage("No series avalilable")
+				}
 				self.collectionSeriesView.reloadData()
 			}
 		})
@@ -96,6 +102,9 @@ extension CharacterDetailViewController {
 			guard let self = self else { return }
 			self.events = events
 			DispatchQueue.main.async {
+				if let events = self.events?.data?.results, events.isEmpty {
+					self.collectionEventsView.setEmptyMessage("No events avalilable")
+				}
 				self.collectionEventsView.reloadData()
 			}
 		})
