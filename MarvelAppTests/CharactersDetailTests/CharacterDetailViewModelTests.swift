@@ -20,40 +20,40 @@ class CharacterDetailViewModelTests: XCTestCase {
 	}
 	
 	func test_fetchComics() {
-		let exp = expectation(description: "Loading comics")
-		exp.assertForOverFulfill = false
+		let expComics = expectation(description: "Loading comics")
+		expComics.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expComics.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.comics.value?.data?.results?.count == 75)
 	}
 	
 	func test_fetchEvents() {
-		let exp = expectation(description: "Loading events")
-		exp.assertForOverFulfill = false
+		let expEvents = expectation(description: "Loading events")
+		expEvents.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expEvents.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.events.value?.data?.results?.count == 8)
 	}
 	
 	func test_fetchSeries() {
-		let exp = expectation(description: "Loading series")
-		exp.assertForOverFulfill = false
+		let expSeries = expectation(description: "Loading series")
+		expSeries.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expSeries.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.series.value?.data?.results?.count == 75)
 	}
 	
 	func test_fetchComicsParseData() {
-		let exp = expectation(description: "Loading comics")
-		exp.assertForOverFulfill = false
+		let expComics = expectation(description: "Loading comics")
+		expComics.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expComics.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.comics.value?.data?.results != nil)
@@ -61,10 +61,10 @@ class CharacterDetailViewModelTests: XCTestCase {
 	}
 	
 	func test_fetchEventsParseData() {
-		let exp = expectation(description: "Loading events")
-		exp.assertForOverFulfill = false
+		let expEvents = expectation(description: "Loading events")
+		expEvents.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expEvents.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.events.value?.data?.results != nil)
@@ -72,10 +72,10 @@ class CharacterDetailViewModelTests: XCTestCase {
 	}
 	
 	func test_fetchSeriesParseData() {
-		let exp = expectation(description: "Loading series")
-		exp.assertForOverFulfill = false
+		let expSeries = expectation(description: "Loading series")
+		expSeries.assertForOverFulfill = false
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expSeries.fulfill()
 		}
 		waitForExpectations(timeout: 1)
 		XCTAssert(viewModel.series.value?.data?.results != nil)
@@ -83,13 +83,13 @@ class CharacterDetailViewModelTests: XCTestCase {
 	}
 	
 	func test_fetchComicsNoInternetError() {
-		let exp = expectation(description: "Error comics expectation")
-		exp.assertForOverFulfill = false
+		let expComcis = expectation(description: "Error comics expectation")
+		expComcis.assertForOverFulfill = false
 		client = ClientMock()
 		client.error = ApiError.noInternet
 		viewModel = CharacterDetailViewModel(client)
 		viewModel.fetchData(identifier: identifier) {
-			exp.fulfill()
+			expComcis.fulfill()
 		}
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.errorMessage.value == "Internet connection appears offline")

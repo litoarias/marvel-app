@@ -21,33 +21,33 @@ class ApiSessionTests: XCTestCase {
 	
 	func test_fetchCharactersPagination() {
 		
-		let exp1 = expectation(description: "Loading characters first page")
+		let expFirstPage = expectation(description: "Loading characters first page")
 		viewModel.fetchCharacters({ _,_ in
-			exp1.fulfill()
+			expFirstPage.fulfill()
 		})
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.characters.value?.count == defaultLimit)
 		XCTAssert(viewModel.currentPage.offset == defaultLimit)
 		
-		let exp2 = expectation(description: "Loading characters second page")
+		let expSecondPage = expectation(description: "Loading characters second page")
 		viewModel.fetchCharacters({ _,_ in
-			exp2.fulfill()
+			expSecondPage.fulfill()
 		})
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.characters.value?.count == defaultLimit)
 		XCTAssert(viewModel.currentPage.offset == defaultLimit * 2)
 		
-		let exp3 = expectation(description: "Loading characters third page")
+		let expThirdPage = expectation(description: "Loading characters third page")
 		viewModel.fetchCharacters({ _,_ in
-			exp3.fulfill()
+			expThirdPage.fulfill()
 		})
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.characters.value?.count == defaultLimit)
 		XCTAssert(viewModel.currentPage.offset == defaultLimit * 3)
 		
-		let exp4 = expectation(description: "Loading characters fourth page")
+		let expFourthPage = expectation(description: "Loading characters fourth page")
 		viewModel.fetchCharacters({ _,_ in
-			exp4.fulfill()
+			expFourthPage.fulfill()
 		})
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.characters.value?.count == defaultLimit)
@@ -55,9 +55,9 @@ class ApiSessionTests: XCTestCase {
 	}
 	
 	func test_fetchCharactersParseData() {
-		let exp = expectation(description: "Loading characters first page")
+		let expFirstPage = expectation(description: "Loading characters first page")
 		viewModel.fetchCharacters({ _,_ in
-			exp.fulfill()
+			expFirstPage.fulfill()
 		})
 		waitForExpectations(timeout: 3)
 		XCTAssert(viewModel.characters.value?[0].identifier == 1011334)
