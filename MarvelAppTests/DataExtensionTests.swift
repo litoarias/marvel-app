@@ -2,12 +2,12 @@ import XCTest
 @testable import MarvelApp
 
 class DataExtensionTests: XCTestCase {
-
+	
 	func testInvalidCredentialsError() {
 		let data = Data("{\"code\": \"InvalidCredentials\"}".utf8)
 		debugPrint(data.getCode())
 		XCTAssert(data.getCode() == ApiError.unauthorized(.invalidCredentials))
-    }
+	}
 	
 	func testInvalidRefererError() {
 		let data = Data("{\"code\": \"InvalidReferer\"}".utf8)
@@ -20,6 +20,4 @@ class DataExtensionTests: XCTestCase {
 		debugPrint(data.getCode())
 		XCTAssert(data.getCode() == ApiError.unauthorized(.invalidHash))
 	}
-
-	// ...
 }
