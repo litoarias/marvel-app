@@ -1,11 +1,13 @@
+#!/bin/sh
+
 set -eo pipefail
 
-gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionProvisioningProfile.mobileprovision ./.github/secrets/DistributionProvisioningProfile.mobileprovision.gpg
-gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionLito.p12 ./.github/secrets/DistributionLito.p12.gpg
+sudo gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionProvisioningProfile.mobileprovision ./.github/secrets/DistributionProvisioningProfile.mobileprovision.gpg
+sudo gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionLito.p12 ./.github/secrets/DistributionLito.p12.gpg
 
-mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+sudo mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 
-cp ./.github/secrets/DistributionProvisioningProfile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/DistributionProvisioningProfile.mobileprovision
+sudo cp ./.github/secrets/DistributionProvisioningProfile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/DistributionProvisioningProfile.mobileprovision
 
 
 security create-keychain -p "" build.keychain
