@@ -26,7 +26,6 @@ playground.xcworkspace
 Pods/
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 *.xcworkspace
-authkey.json
 
 ### fastlane ###
 # fastlane - A streamlined workflow tool for Cocoa deployment
@@ -52,4 +51,7 @@ fastlane/test_output
 # Fastlane.swift runner binary
 fastlane/FastlaneRunner
 
+fastlane/.env
 # End of https://www.toptal.com/developers/gitignore/api/fastlane
+
+authkey.json
