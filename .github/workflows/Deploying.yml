@@ -18,7 +18,7 @@ jobs:
       - name: Install gpg
         run: brew install gnupg
       - name: Add permissions for decrypt_secrets.sh
-        run: chmod +x /secrets/decrypt_secrets.sh
+        run: chmod +x .github/secrets/decrypt_secrets.sh
       - name: Setup provisioning profile
         env:
           IOS_KEYS: ${{ secrets.IOS_KEYS }}
