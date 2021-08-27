@@ -50,6 +50,7 @@
 		41B063A8257EFE5C002BE635 /* comics.json in Resources */ = {isa = PBXBuildFile; fileRef = 41B063A5257EFE5C002BE635 /* comics.json */; };
 		41B063A9257EFE5C002BE635 /* series.json in Resources */ = {isa = PBXBuildFile; fileRef = 41B063A6257EFE5C002BE635 /* series.json */; };
 		41B063AA257EFE5C002BE635 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 41B063A7257EFE5C002BE635 /* events.json */; };
+		41C0A30126D9879E00A72766 /* exportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41C0A30026D9879E00A72766 /* exportOptions.plist */; };
 		41C5BDC9257BB5700061A5EB /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C5BDC8257BB5700061A5EB /* LoadingTableViewCell.swift */; };
 		41D0CA6D257D1E0000ECBDD5 /* ApiSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0CA6C257D1E0000ECBDD5 /* ApiSessionTests.swift */; };
 		41D0CA71257D21B800ECBDD5 /* DataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0CA70257D21B800ECBDD5 /* DataExtensionTests.swift */; };
@@ -127,6 +128,7 @@
 		41B063A5257EFE5C002BE635 /* comics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comics.json; sourceTree = "<group>"; };
 		41B063A6257EFE5C002BE635 /* series.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = series.json; sourceTree = "<group>"; };
 		41B063A7257EFE5C002BE635 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		41C0A30026D9879E00A72766 /* exportOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = exportOptions.plist; sourceTree = "<group>"; };
 		41C5BDC8257BB5700061A5EB /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		41D0CA6C257D1E0000ECBDD5 /* ApiSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSessionTests.swift; sourceTree = "<group>"; };
 		41D0CA70257D21B800ECBDD5 /* DataExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensionTests.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				410D1F092579A85300D1F287 /* Assets.xcassets */,
 				410D1F0B2579A85300D1F287 /* LaunchScreen.storyboard */,
 				410D1F0E2579A85300D1F287 /* Info.plist */,
+				41C0A30026D9879E00A72766 /* exportOptions.plist */,
 			);
 			path = MarvelApp;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				41B063A9257EFE5C002BE635 /* series.json in Resources */,
 				415ADE75257CDEBF00C2A402 /* characters-offset100-limit50.json in Resources */,
 				415ADE76257CDEBF00C2A402 /* characters-offset150-limit50.json in Resources */,
+				41C0A30126D9879E00A72766 /* exportOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,7 +825,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -885,7 +889,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1035,7 +1039,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1145,7 +1149,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
