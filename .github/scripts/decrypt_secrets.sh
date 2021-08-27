@@ -11,7 +11,7 @@ cp ./.github/secrets/DistributionProvisioningProfile.mobileprovision ~/Library/M
 
 
 security create-keychain -p "" build.keychain
-security import ./.github/secrets/DistributionLito.p12 -t agg -k ~/Library/Keychains/build.keychain -P "" -A
+security import -P ./.github/secrets/DistributionLito.p12 -t agg -k ~/Library/Keychains/build.keychain -P "" -A
 
 security list-keychains -s ~/Library/Keychains/build.keychain
 security default-keychain -s ~/Library/Keychains/build.keychain
