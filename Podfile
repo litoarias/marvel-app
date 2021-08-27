@@ -5,13 +5,11 @@ xcodeproj 'MarvelApp.xcodeproj', 'xctest' => :debug
 
 target 'MarvelApp' do
 	use_frameworks!
-	
 	pod 'Alamofire'
 	pod 'PromiseKit/CorePromise'
 	pod 'Sourcery'
 	pod 'PagedLists', :git => 'https://github.com/litoarias/PagedLists'
 	pod 'Kingfisher'
-	
 end
 
 
