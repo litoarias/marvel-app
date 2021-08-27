@@ -1,13 +1,11 @@
 name: Deploying
-
 on:
-
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions a tab
   workflow_dispatch:
 
 jobs:
