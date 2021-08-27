@@ -33,4 +33,4 @@ jobs:
         env:
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
           APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
-        run: ./.github/scripts/publish_testflight.sh
+        run: sudo ./.github/scripts/publish_testflight.sh
