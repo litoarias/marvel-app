@@ -1,6 +1,7 @@
 #!/bin/sh
 set -eo pipefail
 
+echo $IOS_KEYS
 gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionProvisioningProfile.mobileprovision ./.github/secrets/DistributionProvisioningProfile.mobileprovision.gpg
 gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionLito.p12 ./.github/secrets/DistributionLito.p12.gpg
 
