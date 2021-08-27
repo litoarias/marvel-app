@@ -15,22 +15,35 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
+
       - name: Install gpg
         run: brew install gnupg
+        
       - name: Make executeable
         run: chmod +x .github/secrets/decrypt_secrets.sh .github/scripts/archive_app.sh .github/scripts/export_ipa.sh .github/scripts/publish_testflight.sh
+      
       - name: Setup provisioning profile
         env:
           IOS_KEYS: ${{ secrets.IOS_KEYS }}
         run: ./.github/secrets/decrypt_secrets.sh
+      
       - name: Pod install
         run: pod install
+
+      - name: Sourcery setup
+        run: echo -e "export f1a6c7ebb56e86db833d9c1eaba5d39f\nexport b264468b7ee37e0e4d4e8bdb40cb2d23b69e9876" >> env-vars.sh
+
+      - name: Sourcery setup permissions
+        run: chmod +x env-vars.sh
+      
       - name: Archiving project
         env:
           PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
         run: ./.github/scripts/archive_app.sh
+
       - name: Exporting .ipa
         run: ./.github/scripts/export_ipa.sh
+
       - name: Publishing app
         if: success()
         env:
