@@ -1,5 +1,4 @@
 platform :ios, '11.0'
-
 # ignore all warnings from all pods
 inhibit_all_warnings!
 xcodeproj 'MarvelApp.xcodeproj', 'xctest' => :debug
