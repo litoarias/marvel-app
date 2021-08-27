@@ -1,5 +1,4 @@
 name: Deploying
-
 on:
   push:
     branches: [ master ]
@@ -21,7 +20,7 @@ jobs:
       - name: Setup provisioning profile
         env:
           IOS_KEYS: ${{ secrets.IOS_KEYS }}
-        run: ./.github/secrets/decrypt_secrets.sh
+        run: sudo ./.github/secrets/decrypt_secrets.sh
       - name: Archiving project
         env:
           PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
@@ -33,4 +32,4 @@ jobs:
         env:
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
           APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
-        run: sudo ./.github/scripts/publish_testflight.sh
+        run: ./.github/scripts/publish_testflight.sh
