@@ -1,5 +1,3 @@
-#!/bin/sh
-
 set -eo pipefail
 
 gpg --quiet --batch --yes --decrypt --passphrase="$IOS_KEYS" --output ./.github/secrets/DistributionProvisioningProfile.mobileprovision ./.github/secrets/DistributionProvisioningProfile.mobileprovision.gpg
