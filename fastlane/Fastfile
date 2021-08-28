@@ -8,6 +8,7 @@ TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
 APPLE_API_KEY = ENV["APPLE_API_KEY"]
 APPLE_ISSUER_ID = ENV["APPLE_ISSUER_ID"]
 APPLE_KEY_ID = ENV["APPLE_KEY_ID"]
+GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
 
 def delete_temp_keychain(name)
   delete_keychain(
@@ -43,11 +44,8 @@ platform :ios do
       in_house: false
     )
     
-    increment_build_number(
-      xcodeproj: "MarvelApp.xcodeproj",
-      build_number: 20
-    )
-
+    increment_build_number(xcodeproj: "MarvelApp.xcodeproj", build_number: 21)
+    
     cocoapods(
       clean_install: true
     )
@@ -55,7 +53,7 @@ platform :ios do
     match(
       type: 'appstore',
       app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
-      git_basic_authorization: Base64.strict_encode64(ENV["GIT_AUTHORIZATION"]),
+      git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
       readonly: true,
       keychain_name: keychain_name,
       keychain_password: keychain_password,
