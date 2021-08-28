@@ -27,7 +27,7 @@ jobs:
         run: chmod +x env-vars.sh .github/scripts/sourcery-build.sh
       
       - name: Sourcery build
-        run: ./.github/scrips/sourcery-build.sh
+        run: ./.github/scripts/sourcery-build.sh
 
       - name: Deploy iOS Beta to TestFlight via Fastlane
         uses: maierj/fastlane-action@v1.4.0
