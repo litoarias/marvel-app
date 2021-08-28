@@ -956,7 +956,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DistributionProvisioningProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.hipolito.MarvelApp";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
