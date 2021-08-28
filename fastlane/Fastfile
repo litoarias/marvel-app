@@ -43,8 +43,11 @@ platform :ios do
       in_house: false
     )
     
-    increment_build_number(xcodeproj: "MarvelApp.xcodeproj")
-    
+    increment_build_number(
+      xcodeproj: "MarvelApp.xcodeproj",
+      build_number: 20
+    )
+
     cocoapods(
       clean_install: true
     )
