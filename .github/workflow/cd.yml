@@ -1,5 +1,8 @@
+
 name: CD
+
 on:
+
   push:
     branches: [ master ]
   pull_request:
@@ -12,6 +15,7 @@ jobs:
   deploy:
     name: Deploying to Testflight
     runs-on: macOS-latest
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
