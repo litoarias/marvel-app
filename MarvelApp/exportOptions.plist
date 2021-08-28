@@ -14,8 +14,6 @@
         <true/>
         <key>signingStyle</key>
         <string>manual</string>
-        <key>signingCertificate</key>
-        <string>Hipolito Arias</string>
         <key>provisioningProfiles</key>
         <dict>
             <key>com.hipolito.MarvelApp</key>
