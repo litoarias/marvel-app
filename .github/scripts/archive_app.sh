@@ -2,6 +2,10 @@
 
 set -eo pipefail
 
+xcodebuild -workspace MarvelApp.xcworkspace  \
+           -scheme MarvelApp-Release \
+           build
+
 xcodebuild -workspace MarvelApp.xcworkspace \
             -scheme MarvelApp-Release \
             -sdk iphoneos \
