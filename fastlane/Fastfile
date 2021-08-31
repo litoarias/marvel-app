@@ -91,7 +91,7 @@ platform :ios do
     )
 
     slack(
-      message: "Hi! A new iOS "+options[:scheme]+" build has been submitted to TestFlight",
+      message: "Hi! A new iOS build has been submitted to TestFlight",
       payload: {
         "Build Date" => Time.new.to_s,
         "Release Version" => version+"."+build
