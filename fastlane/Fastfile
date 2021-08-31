@@ -83,13 +83,13 @@ platform :ios do
     )
 
     version = get_info_plist_value(
-      path: options[:scheme]+"-Info.plist",
       key: "CFBundleShortVersionString"
     )
+    
     build = get_info_plist_value(
-      path: options[:scheme]+"-Info.plist",
       key: "CFBundleVersion"
     )
+
     slack(
       message: "Hi! A new iOS "+options[:scheme]+" build has been submitted to TestFlight",
       payload: {
