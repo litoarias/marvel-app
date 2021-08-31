@@ -43,8 +43,8 @@ platform :ios do
       duration: 1200,            
       in_house: false
     )
-    get_build_number
-    increment_build_number(xcodeproj: "MarvelApp.xcodeproj")
+    
+    # increment_build_number(xcodeproj: "MarvelApp.xcodeproj")
     
     cocoapods(
       clean_install: true
@@ -81,6 +81,26 @@ platform :ios do
       notify_external_testers: false,
       ipa: "./MarvelApp.ipa"
     )
+
+    version = get_info_plist_value(
+      path: options[:scheme]+"-Info.plist",
+      key: "CFBundleShortVersionString"
+    )
+    build = get_info_plist_value(
+      path: options[:scheme]+"-Info.plist",
+      key: "CFBundleVersion"
+    )
+    slack(
+      message: "Hi! A new iOS "+options[:scheme]+" build has been submitted to TestFlight",
+      payload: {
+        "Build Date" => Time.new.to_s,
+        "Release Version" => version+"."+build
+      },
+      slack_url: "https://hooks.slack.com/services/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",
+      use_webhook_configured_username_and_icon: true,
+      fail_on_error: false,
+      success: true
+    ) 
 
     delete_temp_keychain(keychain_name)
   end
