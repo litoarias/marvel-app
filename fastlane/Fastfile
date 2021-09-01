@@ -83,10 +83,12 @@ platform :ios do
     )
 
     version = get_info_plist_value(
+      path: "MarvelApp-Release-Info.plist",
       key: "CFBundleShortVersionString"
     )
     
     build = get_info_plist_value(
+      path: "MarvelApp-Release-Info.plist",
       key: "CFBundleVersion"
     )
 
@@ -101,6 +103,17 @@ platform :ios do
       fail_on_error: false,
       success: true
     ) 
+
+    error do |lane, exception|
+      slack(
+        message: exception.to_s, 
+        channel: "#automation",
+        slack_url: "https://hooks.slack.com/services/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",
+        success: false, 
+        # Output containing extended log output
+        payload: { "Output" => exception.error_info.to_s }
+      )
+    end
 
     delete_temp_keychain(keychain_name)
   end
