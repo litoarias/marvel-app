@@ -117,7 +117,7 @@ platform :ios do
           "Build Date" => Time.new.to_s,
           "Release Version" => version+"."+build
         },
-        slack_url: "https://hooks.slack.com/services/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",
+        slack_url: "https://hooks.slack.com/services/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",
         use_webhook_configured_username_and_icon: true,
         fail_on_error: false,
         success: true
@@ -132,7 +132,7 @@ platform :ios do
     slack(
       message: exception.to_s, 
       channel: "#automation",
-      slack_url: "https://hooks.slack.com/services/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",
+      slack_url: "https://hooks.slack.com/services/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",
       success: false, 
       # Output containing extended log output
       payload: { "Output" => exception.error_info.to_s }
