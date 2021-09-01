@@ -83,12 +83,12 @@ platform :ios do
     )
 
     version = get_info_plist_value(
-      path: "MarvelApp-Release-Info.plist",
+      path: "Info.plist",
       key: "CFBundleShortVersionString"
     )
     
     build = get_info_plist_value(
-      path: "MarvelApp-Release-Info.plist",
+      path: "Info.plist",
       key: "CFBundleVersion"
     )
 
